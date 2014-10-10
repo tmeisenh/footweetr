@@ -1,0 +1,5 @@
+#include "Pods-ios-fooTests-stubble.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/stubble" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Masonry" "${PODS_ROOT}/Headers/stubble"
+OTHER_LDFLAGS = -ObjC ${PODS_IOS_FOOTESTS_STUBBLE_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
