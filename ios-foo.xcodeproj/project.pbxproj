@@ -34,6 +34,7 @@
 		5AB5C7C319E8C9690067AC6C /* FOOTweetrListingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C219E8C9690067AC6C /* FOOTweetrListingModel.m */; };
 		5AB5C7C619E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C519E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m */; };
 		5AB5C7CA19E8D94A0067AC6C /* FOOTweetrFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C919E8D94A0067AC6C /* FOOTweetrFetchOperation.m */; };
+		5AB5C7CD19E8DF400067AC6C /* FOOTweetrSyncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7CC19E8DF400067AC6C /* FOOTweetrSyncer.m */; };
 		5AB5C7D119E8E4D20067AC6C /* FOODispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7D019E8E4D20067AC6C /* FOODispatcher.m */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,8 @@
 		5AB5C7C519E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewCellTableViewCell.m; path = src/FOOTweetrListingViewCellTableViewCell.m; sourceTree = "<group>"; };
 		5AB5C7C819E8D94A0067AC6C /* FOOTweetrFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrFetchOperation.h; path = src/FOOTweetrFetchOperation.h; sourceTree = "<group>"; };
 		5AB5C7C919E8D94A0067AC6C /* FOOTweetrFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrFetchOperation.m; path = src/FOOTweetrFetchOperation.m; sourceTree = "<group>"; };
+		5AB5C7CB19E8DF400067AC6C /* FOOTweetrSyncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrSyncer.h; path = src/FOOTweetrSyncer.h; sourceTree = "<group>"; };
+		5AB5C7CC19E8DF400067AC6C /* FOOTweetrSyncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrSyncer.m; path = src/FOOTweetrSyncer.m; sourceTree = "<group>"; };
 		5AB5C7CF19E8E4D20067AC6C /* FOODispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOODispatcher.h; path = src/FOODispatcher.h; sourceTree = "<group>"; };
 		5AB5C7D019E8E4D20067AC6C /* FOODispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOODispatcher.m; path = src/FOODispatcher.m; sourceTree = "<group>"; };
 		656CC97A974C451DAB91987C /* Pods-ios-foo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-foo.xcconfig"; path = "Pods/Pods-ios-foo.xcconfig"; sourceTree = "<group>"; };
@@ -262,10 +265,20 @@
 		5AB5C7C719E8D9300067AC6C /* syncer */ = {
 			isa = PBXGroup;
 			children = (
+				5AB5C7CE19E8DF430067AC6C /* Tests */,
 				5AB5C7C819E8D94A0067AC6C /* FOOTweetrFetchOperation.h */,
 				5AB5C7C919E8D94A0067AC6C /* FOOTweetrFetchOperation.m */,
+				5AB5C7CB19E8DF400067AC6C /* FOOTweetrSyncer.h */,
+				5AB5C7CC19E8DF400067AC6C /* FOOTweetrSyncer.m */,
 			);
 			name = syncer;
+			sourceTree = "<group>";
+		};
+		5AB5C7CE19E8DF430067AC6C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +446,7 @@
 			files = (
 				5AB5C7AA19E8C1130067AC6C /* FOOAppDelegate.m in Sources */,
 				5AB5C7D119E8E4D20067AC6C /* FOODispatcher.m in Sources */,
+				5AB5C7CD19E8DF400067AC6C /* FOOTweetrSyncer.m in Sources */,
 				5AB5C7BB19E8C65E0067AC6C /* FOOTweetrListingViewModel.m in Sources */,
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
 				5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */,
