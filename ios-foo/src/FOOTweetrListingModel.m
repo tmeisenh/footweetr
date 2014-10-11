@@ -19,27 +19,32 @@
 }
 
 - (void)createFetchesResultsControllersWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"FOOCoreDataTweetrRecord"];
-    NSSortDescriptor *filenameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    [fetchRequest setSortDescriptors:@[filenameDescriptor]];
-    self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                   managedObjectContext:managedObjectContext sectionNameKeyPath:nil
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([FOOCoreDataTweetrRecord class])];
+    NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    [request setSortDescriptors:@[sorter]];
+    self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                   managedObjectContext:managedObjectContext
+                                                     sectionNameKeyPath:nil
                                                               cacheName:@"metaDataCache"];
     self.frc.delegate = self;
-    
 }
 
 -(NSArray *)fetchAllTweetrRecords {
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([FOOCoreDataTweetrRecord class])];
-    NSArray *unsorted = [self.context executeFetchRequest:request error:nil];
-    NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-
-    return [unsorted sortedArrayUsingDescriptors:@[sorter]];
+    [self.frc performFetch:nil];
+    return self.frc.fetchedObjects;
 }
 
 - (NSString *)text:(NSString *)text number:(int)number {
     return [NSString stringWithFormat:@"%@_%i", text, number];
+}
+
+-(void)controller:(NSFetchedResultsController *)controller
+  didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+    forChangeType:(NSFetchedResultsChangeType)type
+     newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    [self.delegate dateUpdated];
 }
 
 @end

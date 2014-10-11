@@ -7,7 +7,7 @@
 -(NSArray *)fetchAllTweetrRecords {
     NSMutableArray *records = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 2; i++) {
         FOOTweetrRecord *record = [[FOOTweetrRecord alloc] initWithTitle:[FOOUnixTimeStampNow createTimestampForNow]
                                                                     user:[self text:@"someone" number:i]
                                                                  content:[self text:@"something happened" number:i]];

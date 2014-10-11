@@ -3,10 +3,10 @@
 #import "FOOFOOTweetrListingView.h"
 #import "FOOTweetrListingViewModel.h"
 
-@interface FOOTweetrListingViewController () <FOOFOOTweetrListingViewDelegate>
+@interface FOOTweetrListingViewController () <FOOFOOTweetrListingViewDelegate, FOOTweetrListingViewModelDelegate>
 
 @property (nonatomic)FOOTweetrListingViewModel *viewModel;
-
+@property (nonatomic) FOOFOOTweetrListingView *listingView;
 @end
 
 @implementation FOOTweetrListingViewController
@@ -14,6 +14,7 @@
 - (instancetype)initWithTweetrListingModel:(FOOTweetrListingModel *)tweetrListingModel {
     if (self = [super initWithNibName:nil bundle:nil]) {
         self.viewModel = [[FOOTweetrListingViewModel alloc] initWithTweetrListingModel:tweetrListingModel];
+        self.viewModel.delegate = self;
     }
     return self;
 }
@@ -21,10 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    FOOFOOTweetrListingView *listingView = [[FOOFOOTweetrListingView alloc] initWithFrame:CGRectZero];
-    listingView.delegate = self;
-    [listingView updateViewWithTweetrRecords:[self.viewModel fetchAllTweetrRecords]];
-    self.view = listingView;
+    self.listingView = [[FOOFOOTweetrListingView alloc] initWithFrame:CGRectZero];
+    self.listingView.delegate = self;
+    [self.listingView updateViewWithTweetrRecords:[self.viewModel fetchAllTweetrRecords]];
+    self.view = self.listingView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,6 +36,10 @@
 
 -(void)selectedRecord:(FOOTweetrRecord *)record {
     // do something like a popover
+}
+
+-(void)dataChanged {
+    [self.listingView updateViewWithTweetrRecords:[self.viewModel fetchAllTweetrRecords]];
 }
 
 @end

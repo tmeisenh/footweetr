@@ -52,6 +52,9 @@
     }
     
     NSError *error = nil;
+    
+    sleep(15);
+    
     if ([self.backgroundContext hasChanges] && !self.isCancelled) {
         [self.backgroundContext save:&error];
     }

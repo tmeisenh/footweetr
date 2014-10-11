@@ -7,7 +7,7 @@
 @interface FOOFOOTweetrListingView() <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) NSArray *data;
-
+@property (nonatomic) UITableView *listing;
 @end
 
 @implementation FOOFOOTweetrListingView
@@ -31,21 +31,21 @@
             make.height.equalTo(@65);
         }];
         
-        UITableView *listing = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        listing.dataSource = self;
-        listing.delegate = self;
-        listing.backgroundColor = [UIColor clearColor];
-        listing.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        listing.allowsMultipleSelection = NO;
-        listing.allowsSelectionDuringEditing = NO;
-        [listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:FOOFOOTweetrListingViewCellReuseIdentifier];
+        self.listing = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        self.listing.dataSource = self;
+        self.listing.delegate = self;
+        self.listing.backgroundColor = [UIColor clearColor];
+        self.listing.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.listing.allowsMultipleSelection = NO;
+        self.listing.allowsSelectionDuringEditing = NO;
+        [self.listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:FOOFOOTweetrListingViewCellReuseIdentifier];
         
-        [self addSubview:listing];
+        [self addSubview:self.listing];
         
         CGFloat twoThird = 2.0 / 3;
 
         
-        [listing makeConstraints:^(MASConstraintMaker *make) {
+        [self.listing makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(title.bottom).offset(45);
             make.centerX.equalTo(self.centerX);
             make.width.equalTo(self.width).multipliedBy(twoThird);
@@ -61,6 +61,7 @@
 
 -(void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords {
     self.data = tweetrRecords;
+    [self.listing reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
