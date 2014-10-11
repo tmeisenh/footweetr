@@ -10,6 +10,7 @@
     NSManagedObjectContext *backgroundContext;
     FOOTweetrRecordCoreDataAdapter *adapter;
     
+    id <FOOTweetrFetchOperationDelegate> delegate;
     FOOTweetrFetchOperation *testObject;
 }
 @end
@@ -23,10 +24,12 @@
     persistentStoreCoordinator = mock([NSPersistentStoreCoordinator class]);
     backgroundContext = mock([NSManagedObjectContext class]);
     adapter = mock([FOOTweetrRecordCoreDataAdapter class]);
+    delegate = mock(@protocol(FOOTweetrFetchOperationDelegate));
 
     testObject = [[FOOTweetrFetchOperation alloc] initWithTweetrRequestor:requestor
                                                 backgroundCoreDataFactory:backgroundCoreDataFactory
                                                persistentStoreCoordinator:persistentStoreCoordinator];
+    testObject.delegate = delegate;
     
 }
 
@@ -35,11 +38,12 @@
     XCTAssertFalse(testObject.isAsynchronous);
 }
 
-- (void)testWhenOperationIsStarted_ThenBackgroundContextIsCreated {
+- (void)testWhenOperationIsStarted_ThenBackgroundContextIsCreatedAndDelegateIsNotified {
+    [when([backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:persistentStoreCoordinator]) thenReturn:backgroundContext];
     
     [testObject main];
     
-    verifyCalled([backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:persistentStoreCoordinator]);
+    verifyCalled([delegate observeContextForChanges:backgroundContext]);
 }
 
 - (void)testWhenOperationIsStarted_ThenNewRecordsAreFetched {

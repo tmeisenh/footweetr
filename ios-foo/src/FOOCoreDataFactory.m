@@ -18,7 +18,7 @@
 - (NSManagedObjectContext *)createManagedObjectContext {
 
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] init];
+    NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [managedObjectContext setPersistentStoreCoordinator:coordinator];
     
     return managedObjectContext;
@@ -27,7 +27,7 @@
 - (NSManagedObjectContext *)createInMemoryManagedObjectContext {
     
     NSPersistentStoreCoordinator *coordinator = [self inMemoryPersistentStoreCoordinator];
-    NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] init];
+    NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [managedObjectContext setPersistentStoreCoordinator:coordinator];
     
     return managedObjectContext;

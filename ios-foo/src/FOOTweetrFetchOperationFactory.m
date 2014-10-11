@@ -1,5 +1,4 @@
 #import "FOOTweetrFetchOperationFactory.h"
-#import "FOOTweetrFetchOperation.h"
 
 @interface FOOTweetrFetchOperationFactory ()
 
@@ -19,7 +18,8 @@
     }
     return self;
 }
-- (NSOperation *)createOperation:(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+
+- (FOOTweetrFetchOperation *)createOperation:(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     
     return [[FOOTweetrFetchOperation alloc] initWithTweetrRequestor:self.requestor
                                           backgroundCoreDataFactory:self.backgroundCoreDataFactory
