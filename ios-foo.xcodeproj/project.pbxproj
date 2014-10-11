@@ -15,7 +15,6 @@
 		5AB5C74819E8A94B0067AC6C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB5C74719E8A94B0067AC6C /* CoreData.framework */; };
 		5AB5C74E19E8A94B0067AC6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AB5C74C19E8A94B0067AC6C /* InfoPlist.strings */; };
 		5AB5C75019E8A94B0067AC6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C74F19E8A94B0067AC6C /* main.m */; };
-		5AB5C75419E8A94B0067AC6C /* FOOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C75319E8A94B0067AC6C /* FOOAppDelegate.m */; };
 		5AB5C75719E8A94B0067AC6C /* ios_foo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C75519E8A94B0067AC6C /* ios_foo.xcdatamodeld */; };
 		5AB5C75919E8A94B0067AC6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AB5C75819E8A94B0067AC6C /* Images.xcassets */; };
 		5AB5C76019E8A94B0067AC6C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB5C75F19E8A94B0067AC6C /* XCTest.framework */; };
@@ -23,9 +22,10 @@
 		5AB5C76219E8A94B0067AC6C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB5C74519E8A94B0067AC6C /* UIKit.framework */; };
 		5AB5C76319E8A94B0067AC6C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB5C74719E8A94B0067AC6C /* CoreData.framework */; };
 		5AB5C76B19E8A94B0067AC6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AB5C76919E8A94B0067AC6C /* InfoPlist.strings */; };
-		5AB5C76D19E8A94B0067AC6C /* ios_fooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C76C19E8A94B0067AC6C /* ios_fooTests.m */; };
-		5AB5C78E19E8ABC20067AC6C /* FOOCoreDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C78D19E8ABC20067AC6C /* FOOCoreDataFactory.m */; };
-		5AB5C79219E8ACA70067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C79119E8ACA70067AC6C /* FOONSDocumentsDirectoryLocator.m */; };
+		5AB5C7A619E8C1060067AC6C /* FOOCoreDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7A319E8C1060067AC6C /* FOOCoreDataFactory.m */; };
+		5AB5C7A719E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7A519E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m */; };
+		5AB5C7AA19E8C1130067AC6C /* FOOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7A919E8C1130067AC6C /* FOOAppDelegate.m */; };
+		5AB5C7AE19E8C17F0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7AC19E8C16E0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,19 +48,19 @@
 		5AB5C74D19E8A94B0067AC6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5AB5C74F19E8A94B0067AC6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5AB5C75119E8A94B0067AC6C /* ios-foo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ios-foo-Prefix.pch"; sourceTree = "<group>"; };
-		5AB5C75219E8A94B0067AC6C /* FOOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FOOAppDelegate.h; sourceTree = "<group>"; };
-		5AB5C75319E8A94B0067AC6C /* FOOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FOOAppDelegate.m; sourceTree = "<group>"; };
 		5AB5C75619E8A94B0067AC6C /* ios_foo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ios_foo.xcdatamodel; sourceTree = "<group>"; };
 		5AB5C75819E8A94B0067AC6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5AB5C75E19E8A94B0067AC6C /* ios-fooTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-fooTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB5C75F19E8A94B0067AC6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5AB5C76819E8A94B0067AC6C /* ios-fooTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios-fooTests-Info.plist"; sourceTree = "<group>"; };
 		5AB5C76A19E8A94B0067AC6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5AB5C76C19E8A94B0067AC6C /* ios_fooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_fooTests.m; sourceTree = "<group>"; };
-		5AB5C78C19E8ABC20067AC6C /* FOOCoreDataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FOOCoreDataFactory.h; sourceTree = "<group>"; };
-		5AB5C78D19E8ABC20067AC6C /* FOOCoreDataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FOOCoreDataFactory.m; sourceTree = "<group>"; };
-		5AB5C79019E8ACA70067AC6C /* FOONSDocumentsDirectoryLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FOONSDocumentsDirectoryLocator.h; sourceTree = "<group>"; };
-		5AB5C79119E8ACA70067AC6C /* FOONSDocumentsDirectoryLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FOONSDocumentsDirectoryLocator.m; sourceTree = "<group>"; };
+		5AB5C7A219E8C1060067AC6C /* FOOCoreDataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOCoreDataFactory.h; path = src/FOOCoreDataFactory.h; sourceTree = "<group>"; };
+		5AB5C7A319E8C1060067AC6C /* FOOCoreDataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOCoreDataFactory.m; path = src/FOOCoreDataFactory.m; sourceTree = "<group>"; };
+		5AB5C7A419E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOONSDocumentsDirectoryLocator.h; path = src/FOONSDocumentsDirectoryLocator.h; sourceTree = "<group>"; };
+		5AB5C7A519E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOONSDocumentsDirectoryLocator.m; path = src/FOONSDocumentsDirectoryLocator.m; sourceTree = "<group>"; };
+		5AB5C7A819E8C1130067AC6C /* FOOAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOAppDelegate.h; path = src/FOOAppDelegate.h; sourceTree = "<group>"; };
+		5AB5C7A919E8C1130067AC6C /* FOOAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOAppDelegate.m; path = src/FOOAppDelegate.m; sourceTree = "<group>"; };
+		5AB5C7AC19E8C16E0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOONSDocumentsDirectoryLocatorTests.m; path = test/FOONSDocumentsDirectoryLocatorTests.m; sourceTree = "<group>"; };
 		656CC97A974C451DAB91987C /* Pods-ios-foo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-foo.xcconfig"; path = "Pods/Pods-ios-foo.xcconfig"; sourceTree = "<group>"; };
 		C97736658C4F434CAA86E9BF /* libPods-ios-foo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-foo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-fooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,10 +133,10 @@
 		5AB5C74919E8A94B0067AC6C /* ios-foo */ = {
 			isa = PBXGroup;
 			children = (
+				5AB5C7A819E8C1130067AC6C /* FOOAppDelegate.h */,
+				5AB5C7A919E8C1130067AC6C /* FOOAppDelegate.m */,
 				5AB5C78F19E8AC930067AC6C /* utils */,
 				5AB5C78B19E8ABAA0067AC6C /* coredata */,
-				5AB5C75219E8A94B0067AC6C /* FOOAppDelegate.h */,
-				5AB5C75319E8A94B0067AC6C /* FOOAppDelegate.m */,
 				5AB5C75819E8A94B0067AC6C /* Images.xcassets */,
 				5AB5C75519E8A94B0067AC6C /* ios_foo.xcdatamodeld */,
 				5AB5C74A19E8A94B0067AC6C /* Supporting Files */,
@@ -158,7 +158,6 @@
 		5AB5C76619E8A94B0067AC6C /* ios-fooTests */ = {
 			isa = PBXGroup;
 			children = (
-				5AB5C76C19E8A94B0067AC6C /* ios_fooTests.m */,
 				5AB5C76719E8A94B0067AC6C /* Supporting Files */,
 			);
 			path = "ios-fooTests";
@@ -176,8 +175,6 @@
 		5AB5C78B19E8ABAA0067AC6C /* coredata */ = {
 			isa = PBXGroup;
 			children = (
-				5AB5C78C19E8ABC20067AC6C /* FOOCoreDataFactory.h */,
-				5AB5C78D19E8ABC20067AC6C /* FOOCoreDataFactory.m */,
 			);
 			name = coredata;
 			sourceTree = "<group>";
@@ -185,10 +182,21 @@
 		5AB5C78F19E8AC930067AC6C /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				5AB5C79019E8ACA70067AC6C /* FOONSDocumentsDirectoryLocator.h */,
-				5AB5C79119E8ACA70067AC6C /* FOONSDocumentsDirectoryLocator.m */,
+				5AB5C7AB19E8C1550067AC6C /* Tests */,
+				5AB5C7A219E8C1060067AC6C /* FOOCoreDataFactory.h */,
+				5AB5C7A319E8C1060067AC6C /* FOOCoreDataFactory.m */,
+				5AB5C7A419E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.h */,
+				5AB5C7A519E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m */,
 			);
 			name = utils;
+			sourceTree = "<group>";
+		};
+		5AB5C7AB19E8C1550067AC6C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5AB5C7AC19E8C16E0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,11 +362,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AB5C7AA19E8C1130067AC6C /* FOOAppDelegate.m in Sources */,
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
-				5AB5C75419E8A94B0067AC6C /* FOOAppDelegate.m in Sources */,
-				5AB5C78E19E8ABC20067AC6C /* FOOCoreDataFactory.m in Sources */,
 				5AB5C75719E8A94B0067AC6C /* ios_foo.xcdatamodeld in Sources */,
-				5AB5C79219E8ACA70067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */,
+				5AB5C7A719E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */,
+				5AB5C7A619E8C1060067AC6C /* FOOCoreDataFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AB5C76D19E8A94B0067AC6C /* ios_fooTests.m in Sources */,
+				5AB5C7AE19E8C17F0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

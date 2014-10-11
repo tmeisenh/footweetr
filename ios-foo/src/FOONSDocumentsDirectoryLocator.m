@@ -20,7 +20,9 @@
 }
 
 - (NSURL *)applicationDocumentsDirectory {
-    return [[self.fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSArray *urls = [self.fileManager URLsForDirectory:NSDocumentDirectory
+                                             inDomains:NSUserDomainMask];
+    return [urls lastObject];
 }
 
 @end
