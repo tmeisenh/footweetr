@@ -1,6 +1,6 @@
 #import "FOOAppDelegate.h"
 
-#import "FOOTweetrViewController.h"
+#import "FOOTweetrListingViewController.h"
 
 @implementation FOOAppDelegate
 
@@ -11,7 +11,7 @@
     [self.window makeKeyAndVisible];
     
     
-    FOOTweetrViewController *viewController = [[FOOTweetrViewController alloc] init];
+    FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] init];
     self.window.rootViewController = viewController;
     
     return YES;
