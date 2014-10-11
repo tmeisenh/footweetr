@@ -1,8 +1,12 @@
 #import "FOOTweetrRequestor.h"
+#import "FOOBackgroundCoreDataFactory.h"
+#import "FOOTweetrRecordCoreDataAdapter.h"
 
 @interface FOOTweetrFetchOperation : NSOperation
 
 - (instancetype)initWithTweetrRequestor:(id <FOOTweetrRequestor>)tweetrRequestor
-             persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
+              backgroundCoreDataFactory:(FOOBackgroundCoreDataFactory *)backgroundCoreDataFactory
+             persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator
+                        coreDataAdapter:(FOOTweetrRecordCoreDataAdapter *)coreaDataAdapter;
 
 @end

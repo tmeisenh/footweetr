@@ -4,6 +4,8 @@
 @interface FOOTweetrFetchOperation()
 
 @property (nonatomic) id <FOOTweetrRequestor>tweetrRequestor;
+@property (nonatomic) FOOBackgroundCoreDataFactory *backgroundCoreDataFactory;
+@property (nonatomic) FOOTweetrRecordCoreDataAdapter *adapter;
 @property (nonatomic) NSPersistentStoreCoordinator *sharedPersistentStoreCoordinator;
 @property (nonatomic) NSManagedObjectContext *backgroundContext;
 @end
@@ -11,11 +13,15 @@
 @implementation FOOTweetrFetchOperation
 
 -(instancetype)initWithTweetrRequestor:(id<FOOTweetrRequestor>)tweetrRequestor
-            persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+             backgroundCoreDataFactory:(FOOBackgroundCoreDataFactory *)backgroundCoreDataFactory
+            persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator
+                       coreDataAdapter:(FOOTweetrRecordCoreDataAdapter *)coreaDataAdapter {
 
     if (self = [super init]) {
         self.tweetrRequestor = tweetrRequestor;
+        self.backgroundCoreDataFactory = backgroundCoreDataFactory;
         self.sharedPersistentStoreCoordinator = persistentStoreCoordinator;
+        self.adapter = coreaDataAdapter;
     }
     return self;
 }
@@ -30,9 +36,7 @@
         return;
     }
     
-    self.backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    self.backgroundContext.undoManager = nil;
-    self.backgroundContext.persistentStoreCoordinator = self.sharedPersistentStoreCoordinator;
+    self.backgroundContext = [self.backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:self.sharedPersistentStoreCoordinator];
     
     NSArray *records;
     if (!self.isCancelled) {
@@ -43,8 +47,8 @@
     
     if (!self.isCancelled) {
         for (FOOTweetrRecord *record in records) {
-            // convert to coredata type.
-            
+            FOOCoreDataTweetrRecord *coreDataRecord = [self.adapter convertTweetrRecordToCoreDataType:record];
+            [self.backgroundContext insertObject:coreDataRecord];
         }
     }
     
