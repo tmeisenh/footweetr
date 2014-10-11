@@ -1,14 +1,19 @@
 #import "FOOAppDelegate.h"
 
+#import "FOOMainViewController.h"
+
 @implementation FOOAppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    FOOMainViewController *viewController = [[FOOMainViewController alloc] init];
+    self.window.rootViewController = viewController;
+    
     return YES;
 }
 
