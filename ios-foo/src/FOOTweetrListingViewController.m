@@ -38,6 +38,10 @@
     // do something like a popover
 }
 
+-(void)updateRequested {
+    [self dataChanged]; //ForRightNow
+}
+
 -(void)dataChanged {
     [self.listingView updateViewWithTweetrRecords:[self.viewModel fetchAllTweetrRecords]];
 }

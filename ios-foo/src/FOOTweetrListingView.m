@@ -8,6 +8,8 @@
 
 @property (nonatomic) NSArray *data;
 @property (nonatomic) UITableView *listing;
+@property (nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation FOOTweetrListingView
@@ -31,6 +33,9 @@
             make.height.equalTo(@65);
         }];
         
+        self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectZero];
+        [self.refreshControl addTarget:self action:@selector(pullToRefresh) forControlEvents:UIControlEventValueChanged];
+        
         self.listing = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         self.listing.dataSource = self;
         self.listing.delegate = self;
@@ -39,6 +44,7 @@
         self.listing.allowsMultipleSelection = NO;
         self.listing.allowsSelectionDuringEditing = NO;
         [self.listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:FOOTweetrListingViewCellReuseIdentifier];
+        [self.listing addSubview:self.refreshControl];
         
         [self addSubview:self.listing];
         
@@ -60,6 +66,9 @@
 #pragma mark UITableViewDelegate
 
 -(void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords {
+    if ([self.refreshControl isRefreshing]) {
+        [self.refreshControl endRefreshing];
+    }
     self.data = tweetrRecords;
     [self.listing reloadData];
 }
@@ -84,6 +93,10 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.data.count;
+}
+
+- (void)pullToRefresh {
+    [self.delegate updateRequested];
 }
 
 @end

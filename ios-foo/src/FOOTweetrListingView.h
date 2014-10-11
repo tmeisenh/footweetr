@@ -3,7 +3,7 @@
 @protocol FOOTweetrListingViewDelegate <NSObject>
 
 - (void)selectedRecord:(FOOTweetrRecord *)record;
-
+- (void)updateRequested;
 @end
 
 @interface FOOTweetrListingView : UIView
