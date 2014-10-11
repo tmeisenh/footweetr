@@ -1,12 +1,12 @@
-#import "FOOFakeTweetrRequestor.h"
+#import "FOOTweetrListingModel.h"
 #import "FOOTweetrRecord.h"
 
-@implementation FOOFakeTweetrRequestor
+@implementation FOOTweetrListingModel
 
 -(NSArray *)fetchAllTweetrRecords {
     NSMutableArray *records = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 10; i++) {
         FOOTweetrRecord *record = [[FOOTweetrRecord alloc] initWithTitle:[self text:@"something" number:i]
                                                                     user:[self text:@"someone" number:i]
                                                                  content:[self text:@"something happened" number:i]];

@@ -5,7 +5,7 @@
 #import "FOOTweetrRecord.h"
 
 @interface FOOTweetrListingViewModelTests : XCTestCase {
-    id <FOOTweetrRequestor> requestor;
+    FOOTweetrListingModel * lister;
     FOOTweetrListingViewModel *testObject;
 }
 @end
@@ -15,8 +15,8 @@
 - (void)setUp {
     [super setUp];
     
-    requestor = mock(@protocol(FOOTweetrRequestor));
-    testObject = [[FOOTweetrListingViewModel alloc] initWithTweetrRequestor:requestor];
+    lister = mock([FOOTweetrListingModel class]);
+    testObject = [[FOOTweetrListingViewModel alloc] initWithTweetrListingModel:lister];
     
 }
 
@@ -24,7 +24,7 @@
     FOOTweetrRecord *record1 = mock([FOOTweetrRecord class]);
     FOOTweetrRecord *record2 = mock([FOOTweetrRecord class]);
     
-    [when([requestor fetchAllTweetrRecords]) thenReturn:@[record1, record2]];
+    [when([lister fetchAllTweetrRecords]) thenReturn:@[record1, record2]];
 
     NSArray *actual = [testObject fetchAllTweetrRecords];
     

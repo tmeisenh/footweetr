@@ -2,22 +2,23 @@
 
 @interface FOOTweetrListingViewModel()
 
-@property (nonatomic) id <FOOTweetrRequestor> tweetrRequestor;
+@property (nonatomic) FOOTweetrListingModel * tweetrListingModel;
 
 @end
 
 @implementation FOOTweetrListingViewModel
 
--(instancetype)initWithTweetrRequestor:(id<FOOTweetrRequestor>)tweetrRequestor {
+- (instancetype)initWithTweetrListingModel:(FOOTweetrListingModel *)tweetrListingModel {
+    
     if (self = [super init]) {
-        self.tweetrRequestor = tweetrRequestor;
+        self.tweetrListingModel = tweetrListingModel;
     }
     return self;
 }
 
 -(NSArray *)fetchAllTweetrRecords {
     
-    return [self.tweetrRequestor fetchAllTweetrRecords];
+    return [self.tweetrListingModel fetchAllTweetrRecords];
 }
 
 @end

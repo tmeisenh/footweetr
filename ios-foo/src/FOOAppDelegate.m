@@ -3,7 +3,7 @@
 #import "FOOTweetrListingViewController.h"
 #import "FOOTweetrRequestor.h"
 
-#import "FOOFakeTweetrRequestor.h"
+#import "FOOTweetrListingModel.h"
 
 @implementation FOOAppDelegate
 
@@ -14,9 +14,9 @@
     [self.window makeKeyAndVisible];
     
     
-    id <FOOTweetrRequestor> requestor = [[FOOFakeTweetrRequestor alloc] init];
+    FOOTweetrListingModel *listingModel = [[FOOTweetrListingModel alloc] init];
     
-    FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] initWithTweetrRequestor:requestor];
+    FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] initWithTweetrListingModel:listingModel];
     self.window.rootViewController = viewController;
     
     return YES;

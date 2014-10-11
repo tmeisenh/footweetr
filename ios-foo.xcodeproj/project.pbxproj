@@ -31,8 +31,9 @@
 		5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B719E8C5C70067AC6C /* FOOTweetrRecord.m */; };
 		5AB5C7BB19E8C65E0067AC6C /* FOOTweetrListingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7BA19E8C65E0067AC6C /* FOOTweetrListingViewModel.m */; };
 		5AB5C7BF19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */; };
-		5AB5C7C319E8C9690067AC6C /* FOOFakeTweetrRequestor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C219E8C9690067AC6C /* FOOFakeTweetrRequestor.m */; };
+		5AB5C7C319E8C9690067AC6C /* FOOTweetrListingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C219E8C9690067AC6C /* FOOTweetrListingModel.m */; };
 		5AB5C7C619E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C519E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m */; };
+		5AB5C7CA19E8D94A0067AC6C /* FOOTweetrFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C919E8D94A0067AC6C /* FOOTweetrFetchOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,10 +79,12 @@
 		5AB5C7BA19E8C65E0067AC6C /* FOOTweetrListingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewModel.m; path = src/FOOTweetrListingViewModel.m; sourceTree = "<group>"; };
 		5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewModelTests.m; path = test/FOOTweetrListingViewModelTests.m; sourceTree = "<group>"; };
 		5AB5C7C019E8C6D00067AC6C /* FOOTweetrRequestor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FOOTweetrRequestor.h; path = src/FOOTweetrRequestor.h; sourceTree = "<group>"; };
-		5AB5C7C119E8C9690067AC6C /* FOOFakeTweetrRequestor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOFakeTweetrRequestor.h; path = src/FOOFakeTweetrRequestor.h; sourceTree = "<group>"; };
-		5AB5C7C219E8C9690067AC6C /* FOOFakeTweetrRequestor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOFakeTweetrRequestor.m; path = src/FOOFakeTweetrRequestor.m; sourceTree = "<group>"; };
+		5AB5C7C119E8C9690067AC6C /* FOOTweetrListingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrListingModel.h; path = src/FOOTweetrListingModel.h; sourceTree = "<group>"; };
+		5AB5C7C219E8C9690067AC6C /* FOOTweetrListingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingModel.m; path = src/FOOTweetrListingModel.m; sourceTree = "<group>"; };
 		5AB5C7C419E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrListingViewCellTableViewCell.h; path = src/FOOTweetrListingViewCellTableViewCell.h; sourceTree = "<group>"; };
 		5AB5C7C519E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewCellTableViewCell.m; path = src/FOOTweetrListingViewCellTableViewCell.m; sourceTree = "<group>"; };
+		5AB5C7C819E8D94A0067AC6C /* FOOTweetrFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrFetchOperation.h; path = src/FOOTweetrFetchOperation.h; sourceTree = "<group>"; };
+		5AB5C7C919E8D94A0067AC6C /* FOOTweetrFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrFetchOperation.m; path = src/FOOTweetrFetchOperation.m; sourceTree = "<group>"; };
 		656CC97A974C451DAB91987C /* Pods-ios-foo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-foo.xcconfig"; path = "Pods/Pods-ios-foo.xcconfig"; sourceTree = "<group>"; };
 		C97736658C4F434CAA86E9BF /* libPods-ios-foo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-foo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-fooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +157,7 @@
 		5AB5C74919E8A94B0067AC6C /* ios-foo */ = {
 			isa = PBXGroup;
 			children = (
+				5AB5C7C719E8D9300067AC6C /* syncer */,
 				5AB5C7BC19E8C6700067AC6C /* listing */,
 				5AB5C7A819E8C1130067AC6C /* FOOAppDelegate.h */,
 				5AB5C7A919E8C1130067AC6C /* FOOAppDelegate.m */,
@@ -164,8 +168,8 @@
 				5AB5C74A19E8A94B0067AC6C /* Supporting Files */,
 				5AB5C7B619E8C5C70067AC6C /* FOOTweetrRecord.h */,
 				5AB5C7B719E8C5C70067AC6C /* FOOTweetrRecord.m */,
-				5AB5C7C119E8C9690067AC6C /* FOOFakeTweetrRequestor.h */,
-				5AB5C7C219E8C9690067AC6C /* FOOFakeTweetrRequestor.m */,
+				5AB5C7C119E8C9690067AC6C /* FOOTweetrListingModel.h */,
+				5AB5C7C219E8C9690067AC6C /* FOOTweetrListingModel.m */,
 			);
 			path = "ios-foo";
 			sourceTree = "<group>";
@@ -248,6 +252,15 @@
 				5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		5AB5C7C719E8D9300067AC6C /* syncer */ = {
+			isa = PBXGroup;
+			children = (
+				5AB5C7C819E8D94A0067AC6C /* FOOTweetrFetchOperation.h */,
+				5AB5C7C919E8D94A0067AC6C /* FOOTweetrFetchOperation.m */,
+			);
+			name = syncer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,11 +431,12 @@
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
 				5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */,
 				5AB5C75719E8A94B0067AC6C /* ios_foo.xcdatamodeld in Sources */,
-				5AB5C7C319E8C9690067AC6C /* FOOFakeTweetrRequestor.m in Sources */,
+				5AB5C7C319E8C9690067AC6C /* FOOTweetrListingModel.m in Sources */,
 				5AB5C7B519E8C4E60067AC6C /* FOOFOOTweetrListingView.m in Sources */,
 				5AB5C7A719E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */,
 				5AB5C7B219E8C3B60067AC6C /* FOOTweetrListingViewController.m in Sources */,
 				5AB5C7C619E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m in Sources */,
+				5AB5C7CA19E8D94A0067AC6C /* FOOTweetrFetchOperation.m in Sources */,
 				5AB5C7A619E8C1060067AC6C /* FOOCoreDataFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

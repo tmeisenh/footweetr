@@ -1,8 +1,8 @@
-#import "FOOTweetrRequestor.h"
+#import "FOOTweetrListingModel.h"
 
 @interface FOOTweetrListingViewModel : NSObject
 
-- (instancetype)initWithTweetrRequestor:(id <FOOTweetrRequestor>)tweetrRequestor;
+- (instancetype)initWithTweetrListingModel:(FOOTweetrListingModel *)tweetrListingModel;
 
 - (NSArray *)fetchAllTweetrRecords;
 

@@ -1,6 +1,5 @@
 #import "FOOFOOTweetrListingView.h"
 #import "FOOTweetrListingViewCellTableViewCell.h"
-#import "FOOTweetrRecord.h"
 
 #define FOOFOOTweetrListingViewCellReuseIdentifier @"FOOFOOTweetrListingViewCellReuseIdentifier"
 
@@ -68,6 +67,10 @@
     return 100.0;
 }
 
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FOOTweetrRecord *record = self.data[indexPath.row];
+    [self.delegate selectedRecord:record];
+}
 
 #pragma mark UITableViewDataSource
 
