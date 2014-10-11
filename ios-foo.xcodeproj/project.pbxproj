@@ -28,6 +28,9 @@
 		5AB5C7AE19E8C17F0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7AC19E8C16E0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m */; };
 		5AB5C7B219E8C3B60067AC6C /* FOOTweetrListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B119E8C3B60067AC6C /* FOOTweetrListingViewController.m */; };
 		5AB5C7B519E8C4E60067AC6C /* FOOFOOTweetrListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B419E8C4E60067AC6C /* FOOFOOTweetrListingView.m */; };
+		5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B719E8C5C70067AC6C /* FOOTweetrRecord.m */; };
+		5AB5C7BB19E8C65E0067AC6C /* FOOTweetrListingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7BA19E8C65E0067AC6C /* FOOTweetrListingViewModel.m */; };
+		5AB5C7BF19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,12 @@
 		5AB5C7B119E8C3B60067AC6C /* FOOTweetrListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewController.m; path = src/FOOTweetrListingViewController.m; sourceTree = "<group>"; };
 		5AB5C7B319E8C4E60067AC6C /* FOOFOOTweetrListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOFOOTweetrListingView.h; path = src/FOOFOOTweetrListingView.h; sourceTree = "<group>"; };
 		5AB5C7B419E8C4E60067AC6C /* FOOFOOTweetrListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOFOOTweetrListingView.m; path = src/FOOFOOTweetrListingView.m; sourceTree = "<group>"; };
+		5AB5C7B619E8C5C70067AC6C /* FOOTweetrRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrRecord.h; path = src/FOOTweetrRecord.h; sourceTree = "<group>"; };
+		5AB5C7B719E8C5C70067AC6C /* FOOTweetrRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrRecord.m; path = src/FOOTweetrRecord.m; sourceTree = "<group>"; };
+		5AB5C7B919E8C65E0067AC6C /* FOOTweetrListingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrListingViewModel.h; path = src/FOOTweetrListingViewModel.h; sourceTree = "<group>"; };
+		5AB5C7BA19E8C65E0067AC6C /* FOOTweetrListingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewModel.m; path = src/FOOTweetrListingViewModel.m; sourceTree = "<group>"; };
+		5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewModelTests.m; path = test/FOOTweetrListingViewModelTests.m; sourceTree = "<group>"; };
+		5AB5C7C019E8C6D00067AC6C /* FOOTweetrRequestor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FOOTweetrRequestor.h; path = src/FOOTweetrRequestor.h; sourceTree = "<group>"; };
 		656CC97A974C451DAB91987C /* Pods-ios-foo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-foo.xcconfig"; path = "Pods/Pods-ios-foo.xcconfig"; sourceTree = "<group>"; };
 		C97736658C4F434CAA86E9BF /* libPods-ios-foo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-foo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-fooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +148,7 @@
 		5AB5C74919E8A94B0067AC6C /* ios-foo */ = {
 			isa = PBXGroup;
 			children = (
+				5AB5C7BC19E8C6700067AC6C /* listing */,
 				5AB5C7A819E8C1130067AC6C /* FOOAppDelegate.h */,
 				5AB5C7A919E8C1130067AC6C /* FOOAppDelegate.m */,
 				5AB5C78F19E8AC930067AC6C /* utils */,
@@ -146,10 +156,8 @@
 				5AB5C75819E8A94B0067AC6C /* Images.xcassets */,
 				5AB5C75519E8A94B0067AC6C /* ios_foo.xcdatamodeld */,
 				5AB5C74A19E8A94B0067AC6C /* Supporting Files */,
-				5AB5C7B019E8C3B60067AC6C /* FOOTweetrListingViewController.h */,
-				5AB5C7B119E8C3B60067AC6C /* FOOTweetrListingViewController.m */,
-				5AB5C7B319E8C4E60067AC6C /* FOOFOOTweetrListingView.h */,
-				5AB5C7B419E8C4E60067AC6C /* FOOFOOTweetrListingView.m */,
+				5AB5C7B619E8C5C70067AC6C /* FOOTweetrRecord.h */,
+				5AB5C7B719E8C5C70067AC6C /* FOOTweetrRecord.m */,
 			);
 			path = "ios-foo";
 			sourceTree = "<group>";
@@ -205,6 +213,29 @@
 			isa = PBXGroup;
 			children = (
 				5AB5C7AC19E8C16E0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		5AB5C7BC19E8C6700067AC6C /* listing */ = {
+			isa = PBXGroup;
+			children = (
+				5AB5C7BD19E8C6840067AC6C /* Tests */,
+				5AB5C7B019E8C3B60067AC6C /* FOOTweetrListingViewController.h */,
+				5AB5C7B119E8C3B60067AC6C /* FOOTweetrListingViewController.m */,
+				5AB5C7B319E8C4E60067AC6C /* FOOFOOTweetrListingView.h */,
+				5AB5C7B419E8C4E60067AC6C /* FOOFOOTweetrListingView.m */,
+				5AB5C7B919E8C65E0067AC6C /* FOOTweetrListingViewModel.h */,
+				5AB5C7BA19E8C65E0067AC6C /* FOOTweetrListingViewModel.m */,
+				5AB5C7C019E8C6D00067AC6C /* FOOTweetrRequestor.h */,
+			);
+			name = listing;
+			sourceTree = "<group>";
+		};
+		5AB5C7BD19E8C6840067AC6C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -373,7 +404,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AB5C7AA19E8C1130067AC6C /* FOOAppDelegate.m in Sources */,
+				5AB5C7BB19E8C65E0067AC6C /* FOOTweetrListingViewModel.m in Sources */,
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
+				5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */,
 				5AB5C75719E8A94B0067AC6C /* ios_foo.xcdatamodeld in Sources */,
 				5AB5C7B519E8C4E60067AC6C /* FOOFOOTweetrListingView.m in Sources */,
 				5AB5C7A719E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */,
@@ -386,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AB5C7BF19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m in Sources */,
 				5AB5C7AE19E8C17F0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

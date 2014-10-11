@@ -1,8 +1,11 @@
 #import "FOOTweetrListingViewController.h"
 
 #import "FOOFOOTweetrListingView.h"
+#import "FOOTweetrListingViewModel.h"
 
 @interface FOOTweetrListingViewController ()
+
+@property (nonatomic)FOOTweetrListingViewModel *viewModel;
 
 @end
 
@@ -10,6 +13,7 @@
 
 - (instancetype)init {
     if (self = [super initWithNibName:nil bundle:nil]) {
+        self.viewModel = [[FOOTweetrListingViewModel alloc] initWithTweetrRequestor:nil];
     }
     return self;
 }
