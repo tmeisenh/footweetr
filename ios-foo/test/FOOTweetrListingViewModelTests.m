@@ -5,7 +5,7 @@
 #import "FOOTweetrRecord.h"
 
 @interface FOOTweetrListingViewModelTests : XCTestCase {
-    FOOTweetrListingModel * lister;
+    FOOTweetrModel * lister;
     FOOTweetrListingViewModel *testObject;
 }
 @end
@@ -15,8 +15,8 @@
 - (void)setUp {
     [super setUp];
     
-    lister = mock([FOOTweetrListingModel class]);
-    testObject = [[FOOTweetrListingViewModel alloc] initWithTweetrListingModel:lister];
+    lister = mock([FOOTweetrModel class]);
+    testObject = [[FOOTweetrListingViewModel alloc] initWithTweetrModel:lister];
     
 }
 

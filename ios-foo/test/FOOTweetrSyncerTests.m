@@ -47,11 +47,6 @@
  If we didn't do this then when our test pushes a notification
  the test and real instance (via appdelegate) would get the notification.
  */
-- (void)postNotification {
-    [testCenter postNotificationName:NSManagedObjectContextDidSaveNotification
-                                                        object:nil
-                                                      userInfo:nil];
-}
 
 - (void)testSync_AddsOperationToQueue {
     [testObject sync];
@@ -62,11 +57,21 @@
 - (void)testWhenBackgroundOperationSavesContext_ThenItIsMergedOnMainThread {
     FOODispatcherMainthreadBlock block = NULL;
     when([dispatcher dispatchOnMainThreadBlock:capture(&block)]);
+    [testCenter postNotificationName:NSManagedObjectContextDidSaveNotification
+                              object:nil
+                            userInfo:nil];
     
-    [self postNotification];
     block();
     
     verifyCalled([coredata mergeChangesFromContextDidSaveNotification:any()]);
 }
 
+- (void)testWhenMainContextSaves_ThenSaveEventIsIgnored {
+    [testCenter postNotificationName:NSManagedObjectContextDidSaveNotification
+                              object:coredata
+                            userInfo:nil];
+    
+    verifyNoInteractions(dispatcher);
+    verifyNever([coredata mergeChangesFromContextDidSaveNotification:any()]);
+}
 @end

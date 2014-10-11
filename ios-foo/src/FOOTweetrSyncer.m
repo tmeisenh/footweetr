@@ -62,10 +62,13 @@
 
 
 - (void)mergeCoreData:(NSNotification *)notification {
-    /* notification occurs on background thread, merge it on main thread. */
-    [self.dispatcher dispatchOnMainThreadBlock:^{
-        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-    }];
+    // avoid anything coming from our own context.
+    if (![notification.object isEqual:self.managedObjectContext]) {
+        /* notification occurs on background thread, merge it on main thread. */
+        [self.dispatcher dispatchOnMainThreadBlock:^{
+            [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+        }];
+    }
 }
 
 @end
