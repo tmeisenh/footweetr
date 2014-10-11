@@ -26,7 +26,7 @@
 		5AB5C7A719E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7A519E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m */; };
 		5AB5C7AA19E8C1130067AC6C /* FOOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7A919E8C1130067AC6C /* FOOAppDelegate.m */; };
 		5AB5C7AE19E8C17F0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7AC19E8C16E0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m */; };
-		5AB5C7B219E8C3B60067AC6C /* FOOMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B119E8C3B60067AC6C /* FOOMainViewController.m */; };
+		5AB5C7B219E8C3B60067AC6C /* FOOTweetrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B119E8C3B60067AC6C /* FOOTweetrViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +62,8 @@
 		5AB5C7A819E8C1130067AC6C /* FOOAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOAppDelegate.h; path = src/FOOAppDelegate.h; sourceTree = "<group>"; };
 		5AB5C7A919E8C1130067AC6C /* FOOAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOAppDelegate.m; path = src/FOOAppDelegate.m; sourceTree = "<group>"; };
 		5AB5C7AC19E8C16E0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOONSDocumentsDirectoryLocatorTests.m; path = test/FOONSDocumentsDirectoryLocatorTests.m; sourceTree = "<group>"; };
-		5AB5C7B019E8C3B60067AC6C /* FOOMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOMainViewController.h; path = src/FOOMainViewController.h; sourceTree = "<group>"; };
-		5AB5C7B119E8C3B60067AC6C /* FOOMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOMainViewController.m; path = src/FOOMainViewController.m; sourceTree = "<group>"; };
+		5AB5C7B019E8C3B60067AC6C /* FOOTweetrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrViewController.h; path = src/FOOTweetrViewController.h; sourceTree = "<group>"; };
+		5AB5C7B119E8C3B60067AC6C /* FOOTweetrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrViewController.m; path = src/FOOTweetrViewController.m; sourceTree = "<group>"; };
 		656CC97A974C451DAB91987C /* Pods-ios-foo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-foo.xcconfig"; path = "Pods/Pods-ios-foo.xcconfig"; sourceTree = "<group>"; };
 		C97736658C4F434CAA86E9BF /* libPods-ios-foo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-foo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-fooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,8 +143,8 @@
 				5AB5C75819E8A94B0067AC6C /* Images.xcassets */,
 				5AB5C75519E8A94B0067AC6C /* ios_foo.xcdatamodeld */,
 				5AB5C74A19E8A94B0067AC6C /* Supporting Files */,
-				5AB5C7B019E8C3B60067AC6C /* FOOMainViewController.h */,
-				5AB5C7B119E8C3B60067AC6C /* FOOMainViewController.m */,
+				5AB5C7B019E8C3B60067AC6C /* FOOTweetrViewController.h */,
+				5AB5C7B119E8C3B60067AC6C /* FOOTweetrViewController.m */,
 			);
 			path = "ios-foo";
 			sourceTree = "<group>";
@@ -371,7 +371,7 @@
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
 				5AB5C75719E8A94B0067AC6C /* ios_foo.xcdatamodeld in Sources */,
 				5AB5C7A719E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */,
-				5AB5C7B219E8C3B60067AC6C /* FOOMainViewController.m in Sources */,
+				5AB5C7B219E8C3B60067AC6C /* FOOTweetrViewController.m in Sources */,
 				5AB5C7A619E8C1060067AC6C /* FOOCoreDataFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

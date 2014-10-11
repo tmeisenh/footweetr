@@ -1,6 +1,6 @@
 #import "FOOAppDelegate.h"
 
-#import "FOOMainViewController.h"
+#import "FOOTweetrViewController.h"
 
 @implementation FOOAppDelegate
 
@@ -11,7 +11,7 @@
     [self.window makeKeyAndVisible];
     
     
-    FOOMainViewController *viewController = [[FOOMainViewController alloc] init];
+    FOOTweetrViewController *viewController = [[FOOTweetrViewController alloc] init];
     self.window.rootViewController = viewController;
     
     return YES;

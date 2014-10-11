@@ -1,10 +1,10 @@
-#import "FOOMainViewController.h"
+#import "FOOTweetrViewController.h"
 
-@interface FOOMainViewController ()
+@interface FOOTweetrViewController ()
 
 @end
 
-@implementation FOOMainViewController
+@implementation FOOTweetrViewController
 
 - (instancetype)init {
     if (self = [super initWithNibName:nil bundle:nil]) {
