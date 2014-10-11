@@ -1,5 +1,5 @@
 #import "FOOTweetrSyncer.h"
-
+#import "FOOCoreDataContextMerger.h"
 #import "FOOTweetrFetchOperation.h"
 
 @interface FOOTweetrSyncer()
@@ -37,35 +37,24 @@
         self.operationQueue = [[NSOperationQueue alloc] init];
         [self.operationQueue setName:@"TweetrSyncer"];
         [self.operationQueue setMaxConcurrentOperationCount:1];
-        self.notificationCenter = notificationCenter;
-        
-        [self.notificationCenter addObserver:self
-                                    selector:@selector(mergeCoreData:)
-                                        name:NSManagedObjectContextDidSaveNotification
-                                      object:nil];
         
     }
     return self;
 }
 
--(void)dealloc {
-    [self.notificationCenter removeObserver:self
-                                       name:NSManagedObjectContextDidSaveNotification
-                                     object:nil];
-}
 
 - (void)sync {
     //@todo add logic to prevent multiple syncs in progress
-    [self.operationQueue addOperation:[self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator]];
+    FOOCoreDataContextMerger *merger = [[FOOCoreDataContextMerger alloc] init];
+    [merger setMainContext:self.managedObjectContext];
+    
+    FOOTweetrFetchOperation *operation = [self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator];
+    [operation setMerger:merger];
+    
+    [self.operationQueue addOperation: operation];
 }
 
 
 
-- (void)mergeCoreData:(NSNotification *)notification {
-    /* notification occurs on background thread, merge it on main thread. */
-    [self.dispatcher dispatchOnMainThreadBlock:^{
-        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-    }];
-}
 
 @end

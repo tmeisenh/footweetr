@@ -35,6 +35,7 @@
     }
     
     self.backgroundContext = [self.backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:self.sharedPersistentStoreCoordinator];
+    [self.merger setChildContext:self.backgroundContext];
     self.adapter = [self.backgroundCoreDataFactory createCoreDataAdapterForContext:self.backgroundContext];
     
     NSArray *records;

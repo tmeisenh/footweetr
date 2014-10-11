@@ -45,6 +45,7 @@
 		5AF36CB019E8F6C70085C737 /* FOODispatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CAF19E8F6C70085C737 /* FOODispatcherTests.m */; };
 		5AF36CB319E8FCE40085C737 /* FOOFakeRequestor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CB219E8FCE40085C737 /* FOOFakeRequestor.m */; };
 		5AF36CB619E903BF0085C737 /* FOOUnixTimeStampNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CB519E903BF0085C737 /* FOOUnixTimeStampNow.m */; };
+		5AF36CB919E9113D0085C737 /* FOOCoreDataContextMerger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CB819E9113D0085C737 /* FOOCoreDataContextMerger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		5AF36CB219E8FCE40085C737 /* FOOFakeRequestor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOFakeRequestor.m; path = src/FOOFakeRequestor.m; sourceTree = "<group>"; };
 		5AF36CB419E903BF0085C737 /* FOOUnixTimeStampNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOUnixTimeStampNow.h; path = src/FOOUnixTimeStampNow.h; sourceTree = "<group>"; };
 		5AF36CB519E903BF0085C737 /* FOOUnixTimeStampNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOUnixTimeStampNow.m; path = src/FOOUnixTimeStampNow.m; sourceTree = "<group>"; };
+		5AF36CB719E9113D0085C737 /* FOOCoreDataContextMerger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOCoreDataContextMerger.h; path = src/FOOCoreDataContextMerger.h; sourceTree = "<group>"; };
+		5AF36CB819E9113D0085C737 /* FOOCoreDataContextMerger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOCoreDataContextMerger.m; path = src/FOOCoreDataContextMerger.m; sourceTree = "<group>"; };
 		656CC97A974C451DAB91987C /* Pods-ios-foo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-foo.xcconfig"; path = "Pods/Pods-ios-foo.xcconfig"; sourceTree = "<group>"; };
 		C97736658C4F434CAA86E9BF /* libPods-ios-foo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-foo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-fooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +310,8 @@
 				5AB5C7CC19E8DF400067AC6C /* FOOTweetrSyncer.m */,
 				5AF36CA119E8ED590085C737 /* FOOTweetrFetchOperationFactory.h */,
 				5AF36CA219E8ED590085C737 /* FOOTweetrFetchOperationFactory.m */,
+				5AF36CB719E9113D0085C737 /* FOOCoreDataContextMerger.h */,
+				5AF36CB819E9113D0085C737 /* FOOCoreDataContextMerger.m */,
 			);
 			name = syncer;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				5AF36CAE19E8F4060085C737 /* FOOTweetrRecordCoreDataAdapter.m in Sources */,
 				5AB5C7CD19E8DF400067AC6C /* FOOTweetrSyncer.m in Sources */,
 				5AB5C7BB19E8C65E0067AC6C /* FOOTweetrListingViewModel.m in Sources */,
+				5AF36CB919E9113D0085C737 /* FOOCoreDataContextMerger.m in Sources */,
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
 				5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */,
 				5AB5C75719E8A94B0067AC6C /* ios_foo.xcdatamodeld in Sources */,
