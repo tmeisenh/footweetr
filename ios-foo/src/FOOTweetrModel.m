@@ -6,13 +6,17 @@
 
 @property (nonatomic) NSManagedObjectContext *context;
 @property (nonatomic) NSFetchedResultsController *frc;
+@property (nonatomic) FOOTweetrSyncer *syncer;
 @end
 
 @implementation FOOTweetrModel
 
--(instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)context {
+-(instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)context
+                                     syncer:(FOOTweetrSyncer *)syncer {
+    
     if (self = [super init]) {
         self.context = context;
+        self.syncer = syncer;
         [self createFetchesResultsControllersWithManagedObjectContext:self.context];
     }
     return self;
@@ -37,6 +41,10 @@
 
 - (NSString *)text:(NSString *)text number:(int)number {
     return [NSString stringWithFormat:@"%@_%i", text, number];
+}
+
+-(void)requestSync {
+    [self.syncer sync];
 }
 
 -(void)controller:(NSFetchedResultsController *)controller

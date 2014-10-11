@@ -47,7 +47,7 @@
                                                              dispatcher:self.dispatcher
                                                        operationFactory:self.operationFactory];
     
-    FOOTweetrModel *listingModel = [[FOOTweetrModel alloc] initWithManagedObjectContext:self.mainContext];
+    FOOTweetrModel *listingModel = [[FOOTweetrModel alloc] initWithManagedObjectContext:self.mainContext syncer:self.syncer];
     
     FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] initWithTweetrModel:listingModel];
     self.window.rootViewController = viewController;

@@ -23,6 +23,10 @@
     return records;
 }
 
+-(void)requestSync {
+    [self.tweetrModel requestSync];
+}
+
 -(void)dateUpdated {
     [self.delegate dataChanged];
 }

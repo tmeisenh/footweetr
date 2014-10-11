@@ -1,4 +1,4 @@
-#import "FOOTweetrRequestor.h"
+#import "FOOTweetrSyncer.h"
 
 @protocol FOOTweetrModelDelegate <NSObject>
 
@@ -6,14 +6,15 @@
 
 @end
 
-@interface FOOTweetrModel : NSObject <FOOTweetrRequestor>
+@interface FOOTweetrModel : NSObject
 
 @property (nonatomic, weak) id <FOOTweetrModelDelegate> delegate;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
-- (instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)context;
+- (instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)context
+                                      syncer:(FOOTweetrSyncer *)syncer;
 
 - (NSArray *)fetchAllTweetrRecords;
-
+- (void)requestSync;
 
 @end

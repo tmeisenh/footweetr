@@ -14,5 +14,6 @@
 - (instancetype)initWithTweetrModel:(FOOTweetrModel *)tweetrModel;
 
 - (NSArray *)fetchAllTweetrRecords;
+- (void)requestSync;
 
 @end

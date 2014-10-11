@@ -39,7 +39,7 @@
 }
 
 -(void)updateRequested {
-    [self dataChanged]; //ForRightNow
+    [self.viewModel requestSync];
 }
 
 -(void)dataChanged {

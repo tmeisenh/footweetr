@@ -56,7 +56,9 @@
 
 - (void)sync {
     //@todo add logic to prevent multiple syncs in progress
-    [self.operationQueue addOperation:[self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator]];
+    NSOperation *operation = [self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator];
+    
+    [self.operationQueue addOperation:operation];
 }
 
 
