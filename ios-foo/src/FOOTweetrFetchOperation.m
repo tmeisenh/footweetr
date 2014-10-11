@@ -14,14 +14,12 @@
 
 -(instancetype)initWithTweetrRequestor:(id<FOOTweetrRequestor>)tweetrRequestor
              backgroundCoreDataFactory:(FOOBackgroundCoreDataFactory *)backgroundCoreDataFactory
-            persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator
-                       coreDataAdapter:(FOOTweetrRecordCoreDataAdapter *)coreaDataAdapter {
+            persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
 
     if (self = [super init]) {
         self.tweetrRequestor = tweetrRequestor;
         self.backgroundCoreDataFactory = backgroundCoreDataFactory;
         self.sharedPersistentStoreCoordinator = persistentStoreCoordinator;
-        self.adapter = coreaDataAdapter;
     }
     return self;
 }
@@ -37,6 +35,7 @@
     }
     
     self.backgroundContext = [self.backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:self.sharedPersistentStoreCoordinator];
+    self.adapter = [self.backgroundCoreDataFactory createCoreDataAdapterForContext:self.backgroundContext];
     
     NSArray *records;
     if (!self.isCancelled) {
@@ -44,7 +43,7 @@
     }
     
     // for laziness our 'network' object returns the same object as our view takes.
-    
+    // In real code, we'd build up batch sizes to save to core data...
     if (!self.isCancelled) {
         for (FOOTweetrRecord *record in records) {
             FOOCoreDataTweetrRecord *coreDataRecord = [self.adapter convertTweetrRecordToCoreDataType:record];

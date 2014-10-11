@@ -6,7 +6,6 @@
 
 - (instancetype)initWithTweetrRequestor:(id <FOOTweetrRequestor>)tweetrRequestor
               backgroundCoreDataFactory:(FOOBackgroundCoreDataFactory *)backgroundCoreDataFactory
-             persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator
-                        coreDataAdapter:(FOOTweetrRecordCoreDataAdapter *)coreaDataAdapter;
+             persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 
 @end

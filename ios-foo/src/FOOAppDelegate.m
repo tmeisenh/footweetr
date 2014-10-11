@@ -3,7 +3,28 @@
 #import "FOOTweetrListingViewController.h"
 #import "FOOTweetrRequestor.h"
 
+#import "FOONSDocumentsDirectoryLocator.h"
+#import "FOOCoreDataFactory.h"
+#import "FOOTweetrSyncer.h"
+#import "FOODispatcher.h"
+#import "FOOTweetrFetchOperationFactory.h"
+#import "FOOBackgroundCoreDataFactory.h"
+#import "FOOTweetrRecordCoreDataAdapter.h"
+#import "FOOFakeRequestor.h"
 #import "FOOTweetrListingModel.h"
+
+@interface FOOAppDelegate()
+
+@property (nonatomic) FOONSDocumentsDirectoryLocator *documentsLocator;
+@property (nonatomic) FOOCoreDataFactory *coredataFactory;
+@property (nonatomic) NSManagedObjectContext *mainContext;
+@property (nonatomic) FOODispatcher *dispatcher;
+@property (nonatomic) FOOBackgroundCoreDataFactory *backgroundCoreDataFactory;
+@property (nonatomic) id <FOOTweetrRequestor> requestor;
+@property (nonatomic) FOOTweetrFetchOperationFactory *operationFactory;
+@property (nonatomic) FOOTweetrSyncer *syncer;
+
+@end
 
 @implementation FOOAppDelegate
 
@@ -14,10 +35,23 @@
     [self.window makeKeyAndVisible];
     
     
-    FOOTweetrListingModel *listingModel = [[FOOTweetrListingModel alloc] init];
+    self.documentsLocator = [[FOONSDocumentsDirectoryLocator alloc] init];
+    self.coredataFactory = [[FOOCoreDataFactory alloc] initWithDocumentsDirectoryLocator:self.documentsLocator];
+    self.mainContext = [self.coredataFactory createManagedObjectContext];
+    self.dispatcher = [[FOODispatcher alloc] init];
+    self.backgroundCoreDataFactory = [[FOOBackgroundCoreDataFactory alloc] init];
+    self.requestor = [[FOOFakeRequestor alloc] init];
+    self.operationFactory = [[FOOTweetrFetchOperationFactory alloc] initWithTweetrRequestor:self.requestor
+                                                                  backgroundCoreDataFactory:self.backgroundCoreDataFactory];
+    self.syncer = [[FOOTweetrSyncer alloc] initWithManagedObjectContext:self.mainContext
+                                                             dispatcher:self.dispatcher
+                                                       operationFactory:self.operationFactory];
+    
+    FOOTweetrListingModel *listingModel = [[FOOTweetrListingModel alloc] initWithManagedObjectContext:self.mainContext];
     
     FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] initWithTweetrListingModel:listingModel];
     self.window.rootViewController = viewController;
+    [self.syncer sync];
     
     return YES;
 }

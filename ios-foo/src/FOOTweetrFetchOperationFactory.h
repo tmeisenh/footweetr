@@ -6,8 +6,7 @@
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithTweetrRequestor:(id <FOOTweetrRequestor>)requestor
-              backgroundCoreDataFactory:(FOOBackgroundCoreDataFactory *)backgroundCoreDataFactory
-                        coreDataAdapter:(FOOTweetrRecordCoreDataAdapter *)coreDataAdapter;
+              backgroundCoreDataFactory:(FOOBackgroundCoreDataFactory *)backgroundCoreDataFactory;
 
 - (NSOperation *)createOperation:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 

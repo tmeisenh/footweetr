@@ -11,4 +11,10 @@
     return context;
 }
 
+-(FOOTweetrRecordCoreDataAdapter *)createCoreDataAdapterForContext:(NSManagedObjectContext *)context {
+    FOOTweetrRecordCoreDataAdapter *adapter = [[FOOTweetrRecordCoreDataAdapter alloc] initWithManagedObjectContext:context];
+    
+    return adapter;
+}
+
 @end

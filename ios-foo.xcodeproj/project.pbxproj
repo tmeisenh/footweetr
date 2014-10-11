@@ -42,6 +42,9 @@
 		5AF36CA819E8F1AB0085C737 /* FOOTweetrFetchOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CA719E8F1AB0085C737 /* FOOTweetrFetchOperationTests.m */; };
 		5AF36CAB19E8F3AC0085C737 /* FOOCoreDataTweetrRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CAA19E8F3AC0085C737 /* FOOCoreDataTweetrRecord.m */; };
 		5AF36CAE19E8F4060085C737 /* FOOTweetrRecordCoreDataAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CAD19E8F4060085C737 /* FOOTweetrRecordCoreDataAdapter.m */; };
+		5AF36CB019E8F6C70085C737 /* FOODispatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CAF19E8F6C70085C737 /* FOODispatcherTests.m */; };
+		5AF36CB319E8FCE40085C737 /* FOOFakeRequestor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CB219E8FCE40085C737 /* FOOFakeRequestor.m */; };
+		5AF36CB619E903BF0085C737 /* FOOUnixTimeStampNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF36CB519E903BF0085C737 /* FOOUnixTimeStampNow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,11 @@
 		5AF36CAA19E8F3AC0085C737 /* FOOCoreDataTweetrRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOCoreDataTweetrRecord.m; path = src/FOOCoreDataTweetrRecord.m; sourceTree = "<group>"; };
 		5AF36CAC19E8F4060085C737 /* FOOTweetrRecordCoreDataAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrRecordCoreDataAdapter.h; path = src/FOOTweetrRecordCoreDataAdapter.h; sourceTree = "<group>"; };
 		5AF36CAD19E8F4060085C737 /* FOOTweetrRecordCoreDataAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrRecordCoreDataAdapter.m; path = src/FOOTweetrRecordCoreDataAdapter.m; sourceTree = "<group>"; };
+		5AF36CAF19E8F6C70085C737 /* FOODispatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOODispatcherTests.m; path = test/FOODispatcherTests.m; sourceTree = "<group>"; };
+		5AF36CB119E8FCE40085C737 /* FOOFakeRequestor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOFakeRequestor.h; path = src/FOOFakeRequestor.h; sourceTree = "<group>"; };
+		5AF36CB219E8FCE40085C737 /* FOOFakeRequestor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOFakeRequestor.m; path = src/FOOFakeRequestor.m; sourceTree = "<group>"; };
+		5AF36CB419E903BF0085C737 /* FOOUnixTimeStampNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOUnixTimeStampNow.h; path = src/FOOUnixTimeStampNow.h; sourceTree = "<group>"; };
+		5AF36CB519E903BF0085C737 /* FOOUnixTimeStampNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOUnixTimeStampNow.m; path = src/FOOUnixTimeStampNow.m; sourceTree = "<group>"; };
 		656CC97A974C451DAB91987C /* Pods-ios-foo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-foo.xcconfig"; path = "Pods/Pods-ios-foo.xcconfig"; sourceTree = "<group>"; };
 		C97736658C4F434CAA86E9BF /* libPods-ios-foo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-foo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-fooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +199,8 @@
 				5AB5C7B719E8C5C70067AC6C /* FOOTweetrRecord.m */,
 				5AB5C7C119E8C9690067AC6C /* FOOTweetrListingModel.h */,
 				5AB5C7C219E8C9690067AC6C /* FOOTweetrListingModel.m */,
+				5AF36CB119E8FCE40085C737 /* FOOFakeRequestor.h */,
+				5AF36CB219E8FCE40085C737 /* FOOFakeRequestor.m */,
 			);
 			path = "ios-foo";
 			sourceTree = "<group>";
@@ -247,6 +257,8 @@
 				5AB5C7D019E8E4D20067AC6C /* FOODispatcher.m */,
 				5AF36CA419E8EFAC0085C737 /* FOOBackgroundCoreDataFactory.h */,
 				5AF36CA519E8EFAC0085C737 /* FOOBackgroundCoreDataFactory.m */,
+				5AF36CB419E903BF0085C737 /* FOOUnixTimeStampNow.h */,
+				5AF36CB519E903BF0085C737 /* FOOUnixTimeStampNow.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -255,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				5AB5C7AC19E8C16E0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m */,
+				5AF36CAF19E8F6C70085C737 /* FOODispatcherTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -470,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF36CB619E903BF0085C737 /* FOOUnixTimeStampNow.m in Sources */,
 				5AB5C7AA19E8C1130067AC6C /* FOOAppDelegate.m in Sources */,
 				5AB5C7D119E8E4D20067AC6C /* FOODispatcher.m in Sources */,
 				5AF36CAE19E8F4060085C737 /* FOOTweetrRecordCoreDataAdapter.m in Sources */,
@@ -488,6 +502,7 @@
 				5AB5C7CA19E8D94A0067AC6C /* FOOTweetrFetchOperation.m in Sources */,
 				5AB5C7A619E8C1060067AC6C /* FOOCoreDataFactory.m in Sources */,
 				5AF36CA319E8ED590085C737 /* FOOTweetrFetchOperationFactory.m in Sources */,
+				5AF36CB319E8FCE40085C737 /* FOOFakeRequestor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF36CB019E8F6C70085C737 /* FOODispatcherTests.m in Sources */,
 				5AB5C7D319E8E6180067AC6C /* FOOTweetrSyncerTests.m in Sources */,
 				5AB5C7BF19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m in Sources */,
 				5AF36CA819E8F1AB0085C737 /* FOOTweetrFetchOperationTests.m in Sources */,
