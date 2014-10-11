@@ -24,11 +24,11 @@
     return self;
 }
 
--(BOOL)isConcurrent {
+-(BOOL)isAsynchronous {
     return NO;
 }
 
--(void)start {
+-(void)main {
     
     if (self.isCancelled) {
         return;

@@ -32,17 +32,18 @@
 
 - (void)testOperationIsSynchronous {
     XCTAssertFalse(testObject.isConcurrent);
+    XCTAssertFalse(testObject.isAsynchronous);
 }
 
 - (void)testWhenOperationIsStarted_ThenBackgroundContextIsCreated {
     
-    [testObject start];
+    [testObject main];
     
     verifyCalled([backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:persistentStoreCoordinator]);
 }
 
 - (void)testWhenOperationIsStarted_ThenNewRecordsAreFetched {
-    [testObject start];
+    [testObject main];
     
     verifyCalled([requestor fetchAllTweetrRecords]);
 }
@@ -61,7 +62,7 @@
 
     
     [when([backgroundContext hasChanges]) thenReturn:@YES];
-    [testObject start];
+    [testObject main];
     
     verifyCalled([backgroundContext insertObject:c1]);
     verifyCalled([backgroundContext insertObject:c2]);
@@ -72,14 +73,14 @@
     [when([backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:persistentStoreCoordinator]) thenReturn:backgroundContext];
     [when([backgroundContext hasChanges]) thenReturn:@NO];
     
-    [testObject start];
+    [testObject main];
     
     verifyNever([backgroundContext save:any(__autoreleasing NSError **)]);
 }
 
 - (void)testWhenOperationIsCanceledBeforeStarting_ThenItDoesNothing {
     [testObject cancel];
-    [testObject start];
+    [testObject main];
     
     verifyNoInteractions(requestor);
     verifyNoInteractions(backgroundCoreDataFactory);
@@ -92,7 +93,7 @@
         [testObject cancel];
     }];
     
-    [testObject start];
+    [testObject main];
     
     verifyNoInteractions(requestor);
     verifyNoInteractions(backgroundContext);
@@ -106,7 +107,7 @@
         [testObject cancel];
     }];
     
-    [testObject start];
+    [testObject main];
     
     verifyNoInteractions(adapter);
     verifyNever([backgroundContext insertObject:any()]);
@@ -131,7 +132,7 @@
     
     [when([backgroundContext hasChanges]) thenReturn:@YES];
     
-    [testObject start];
+    [testObject main];
     
     verifyNever([backgroundContext save:any(__autoreleasing NSError **)]);
 }
