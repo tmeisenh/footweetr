@@ -1,6 +1,9 @@
 #import "FOOAppDelegate.h"
 
 #import "FOOTweetrListingViewController.h"
+#import "FOOTweetrRequestor.h"
+
+#import "FOOFakeTweetrRequestor.h"
 
 @implementation FOOAppDelegate
 
@@ -11,7 +14,9 @@
     [self.window makeKeyAndVisible];
     
     
-    FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] init];
+    id <FOOTweetrRequestor> requestor = [[FOOFakeTweetrRequestor alloc] init];
+    
+    FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] initWithTweetrRequestor:requestor];
     self.window.rootViewController = viewController;
     
     return YES;

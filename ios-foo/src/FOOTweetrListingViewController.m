@@ -11,9 +11,10 @@
 
 @implementation FOOTweetrListingViewController
 
-- (instancetype)init {
+- (instancetype)initWithTweetrRequestor:(id <FOOTweetrRequestor>)tweetrRequestor {
+    
     if (self = [super initWithNibName:nil bundle:nil]) {
-        self.viewModel = [[FOOTweetrListingViewModel alloc] initWithTweetrRequestor:nil];
+        self.viewModel = [[FOOTweetrListingViewModel alloc] initWithTweetrRequestor:tweetrRequestor];
     }
     return self;
 }
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     
     FOOFOOTweetrListingView *listingView = [[FOOFOOTweetrListingView alloc] initWithFrame:CGRectZero];
-    
+    [listingView updateViewWithTweetrRecords:[self.viewModel fetchAllTweetrRecords]];
     self.view = listingView;
 }
 

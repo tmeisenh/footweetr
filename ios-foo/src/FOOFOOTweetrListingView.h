@@ -2,4 +2,6 @@
 
 @interface FOOFOOTweetrListingView : UIView
 
+- (void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords;
+
 @end
