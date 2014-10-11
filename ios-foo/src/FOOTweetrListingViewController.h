@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
-#import "FOOTweetrListingModel.h"
+#import "FOOTweetrModel.h"
 
 @interface FOOTweetrListingViewController : UIViewController
 
-- (instancetype)initWithTweetrListingModel:(FOOTweetrListingModel *)tweetrListingModel;
+- (instancetype)initWithTweetrModel:(FOOTweetrModel *)tweetrModel;
 
 @end

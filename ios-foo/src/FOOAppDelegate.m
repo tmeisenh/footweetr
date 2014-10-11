@@ -11,7 +11,7 @@
 #import "FOOBackgroundCoreDataFactory.h"
 #import "FOOTweetrRecordCoreDataAdapter.h"
 #import "FOOFakeRequestor.h"
-#import "FOOTweetrListingModel.h"
+#import "FOOTweetrModel.h"
 
 @interface FOOAppDelegate()
 
@@ -47,9 +47,9 @@
                                                              dispatcher:self.dispatcher
                                                        operationFactory:self.operationFactory];
     
-    FOOTweetrListingModel *listingModel = [[FOOTweetrListingModel alloc] initWithManagedObjectContext:self.mainContext];
+    FOOTweetrModel *listingModel = [[FOOTweetrModel alloc] initWithManagedObjectContext:self.mainContext];
     
-    FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] initWithTweetrListingModel:listingModel];
+    FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] initWithTweetrModel:listingModel];
     self.window.rootViewController = viewController;
     [self.syncer sync];
     

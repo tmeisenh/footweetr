@@ -1,19 +1,19 @@
 #import "FOOTweetrListingViewController.h"
 
-#import "FOOFOOTweetrListingView.h"
+#import "FOOTweetrListingView.h"
 #import "FOOTweetrListingViewModel.h"
 
-@interface FOOTweetrListingViewController () <FOOFOOTweetrListingViewDelegate, FOOTweetrListingViewModelDelegate>
+@interface FOOTweetrListingViewController () <FOOTweetrListingViewDelegate, FOOTweetrListingViewModelDelegate>
 
-@property (nonatomic)FOOTweetrListingViewModel *viewModel;
-@property (nonatomic) FOOFOOTweetrListingView *listingView;
+@property (nonatomic) FOOTweetrListingViewModel *viewModel;
+@property (nonatomic) FOOTweetrListingView *listingView;
 @end
 
 @implementation FOOTweetrListingViewController
 
-- (instancetype)initWithTweetrListingModel:(FOOTweetrListingModel *)tweetrListingModel {
+- (instancetype)initWithTweetrModel:(FOOTweetrModel *)tweetrModel {
     if (self = [super initWithNibName:nil bundle:nil]) {
-        self.viewModel = [[FOOTweetrListingViewModel alloc] initWithTweetrListingModel:tweetrListingModel];
+        self.viewModel = [[FOOTweetrListingViewModel alloc] initWithTweetrModel:tweetrModel];
         self.viewModel.delegate = self;
     }
     return self;
@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.listingView = [[FOOFOOTweetrListingView alloc] initWithFrame:CGRectZero];
+    self.listingView = [[FOOTweetrListingView alloc] initWithFrame:CGRectZero];
     self.listingView.delegate = self;
     [self.listingView updateViewWithTweetrRecords:[self.viewModel fetchAllTweetrRecords]];
     self.view = self.listingView;

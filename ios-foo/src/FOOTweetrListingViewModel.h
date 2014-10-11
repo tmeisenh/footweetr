@@ -1,4 +1,4 @@
-#import "FOOTweetrListingModel.h"
+#import "FOOTweetrModel.h"
 
 @protocol FOOTweetrListingViewModelDelegate <NSObject>
 
@@ -11,7 +11,7 @@
 @property (nonatomic, weak) id <FOOTweetrListingViewModelDelegate> delegate;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
-- (instancetype)initWithTweetrListingModel:(FOOTweetrListingModel *)tweetrListingModel;
+- (instancetype)initWithTweetrModel:(FOOTweetrModel *)tweetrModel;
 
 - (NSArray *)fetchAllTweetrRecords;
 

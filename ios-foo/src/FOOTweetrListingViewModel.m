@@ -1,25 +1,25 @@
 #import "FOOTweetrListingViewModel.h"
 
-@interface FOOTweetrListingViewModel() < FOOTweetrListingModelDelegate>
+@interface FOOTweetrListingViewModel() < FOOTweetrModelDelegate>
 
-@property (nonatomic) FOOTweetrListingModel * tweetrListingModel;
+@property (nonatomic) FOOTweetrModel * tweetrModel;
 
 @end
 
 @implementation FOOTweetrListingViewModel
 
-- (instancetype)initWithTweetrListingModel:(FOOTweetrListingModel *)tweetrListingModel {
+- (instancetype)initWithTweetrModel:(FOOTweetrModel *)tweetrModel {
     
     if (self = [super init]) {
-        self.tweetrListingModel = tweetrListingModel;
-        self.tweetrListingModel.delegate = self;
+        self.tweetrModel = tweetrModel;
+        self.tweetrModel.delegate = self;
     }
     return self;
 }
 
 -(NSArray *)fetchAllTweetrRecords {
     
-    NSArray * records = [self.tweetrListingModel fetchAllTweetrRecords];
+    NSArray * records = [self.tweetrModel fetchAllTweetrRecords];
     return records;
 }
 

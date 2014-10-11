@@ -1,16 +1,16 @@
-#import "FOOFOOTweetrListingView.h"
+#import "FOOTweetrListingView.h"
 #import "FOOTweetrListingViewCellTableViewCell.h"
 
-#define FOOFOOTweetrListingViewCellReuseIdentifier @"FOOFOOTweetrListingViewCellReuseIdentifier"
+#define FOOTweetrListingViewCellReuseIdentifier @"FOOTweetrListingViewCellReuseIdentifier"
 
 
-@interface FOOFOOTweetrListingView() <UITableViewDataSource, UITableViewDelegate>
+@interface FOOTweetrListingView() <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) NSArray *data;
 @property (nonatomic) UITableView *listing;
 @end
 
-@implementation FOOFOOTweetrListingView
+@implementation FOOTweetrListingView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -38,7 +38,7 @@
         self.listing.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.listing.allowsMultipleSelection = NO;
         self.listing.allowsSelectionDuringEditing = NO;
-        [self.listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:FOOFOOTweetrListingViewCellReuseIdentifier];
+        [self.listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:FOOTweetrListingViewCellReuseIdentifier];
         
         [self addSubview:self.listing];
         
@@ -76,7 +76,7 @@
 #pragma mark UITableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FOOTweetrListingViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FOOFOOTweetrListingViewCellReuseIdentifier];
+    FOOTweetrListingViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FOOTweetrListingViewCellReuseIdentifier];
     FOOTweetrRecord *record = self.data[indexPath.row];
     [cell setTitle:record.title user:record.user content:record.content];
     return cell;

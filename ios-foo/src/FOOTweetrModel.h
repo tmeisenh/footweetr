@@ -1,14 +1,14 @@
 #import "FOOTweetrRequestor.h"
 
-@protocol FOOTweetrListingModelDelegate <NSObject>
+@protocol FOOTweetrModelDelegate <NSObject>
 
 - (void)dateUpdated;
 
 @end
 
-@interface FOOTweetrListingModel : NSObject <FOOTweetrRequestor>
+@interface FOOTweetrModel : NSObject <FOOTweetrRequestor>
 
-@property (nonatomic, weak) id <FOOTweetrListingModelDelegate> delegate;
+@property (nonatomic, weak) id <FOOTweetrModelDelegate> delegate;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)context;

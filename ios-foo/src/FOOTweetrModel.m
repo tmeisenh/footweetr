@@ -1,14 +1,14 @@
-#import "FOOTweetrListingModel.h"
+#import "FOOTweetrModel.h"
 #import "FOOTweetrRecord.h"
 #import "FOOCoreDataTweetrRecord.h"
 
-@interface FOOTweetrListingModel() <NSFetchedResultsControllerDelegate>
+@interface FOOTweetrModel() <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic) NSManagedObjectContext *context;
 @property (nonatomic) NSFetchedResultsController *frc;
 @end
 
-@implementation FOOTweetrListingModel
+@implementation FOOTweetrModel
 
 -(instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)context {
     if (self = [super init]) {
