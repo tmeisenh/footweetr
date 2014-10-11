@@ -8,6 +8,7 @@
 @property (nonatomic) id <FOOTweetrRequestor>tweetrRequestor;
 @property (nonatomic) FOODispatcher *dispatcher;
 @property (nonatomic) NSOperationQueue *operationQueue;
+@property (nonatomic) NSNotificationCenter *notificationCenter;
 
 @end
 
@@ -17,6 +18,16 @@
                              tweetrRequestor:(id<FOOTweetrRequestor>)tweetrRequestor
                                   dispatcher:(FOODispatcher *)dispatcher {
     
+    return [self initWithManagedObjectContext:managedObjectContext
+                              tweetrRequestor:tweetrRequestor
+                                   dispatcher:dispatcher notificationCenter:[NSNotificationCenter defaultCenter]];
+}
+
+- (instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+                             tweetrRequestor:(id<FOOTweetrRequestor>)tweetrRequestor
+                                  dispatcher:(FOODispatcher *)dispatcher
+                          notificationCenter:(NSNotificationCenter *)notificationCenter {
+    
     if (self = [super init]) {
         self.managedObjectContext = managedObjectContext;
         self.tweetrRequestor = tweetrRequestor;
@@ -24,20 +35,21 @@
         self.operationQueue = [[NSOperationQueue alloc] init];
         [self.operationQueue setName:@"TweetrSyncer"];
         [self.operationQueue setMaxConcurrentOperationCount:1];
+        self.notificationCenter = notificationCenter;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(mergeCoreData:)
-                                                     name:NSManagedObjectContextDidSaveNotification
-                                                   object:nil];
+        [self.notificationCenter addObserver:self
+                                    selector:@selector(mergeCoreData:)
+                                        name:NSManagedObjectContextDidSaveNotification
+                                      object:nil];
         
     }
     return self;
 }
 
 -(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:NSManagedObjectContextDidSaveNotification
-                                                  object:nil];
+    [self.notificationCenter removeObserver:self
+                                       name:NSManagedObjectContextDidSaveNotification
+                                     object:nil];
 }
 
 - (void)sync {

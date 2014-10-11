@@ -36,6 +36,7 @@
 		5AB5C7CA19E8D94A0067AC6C /* FOOTweetrFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C919E8D94A0067AC6C /* FOOTweetrFetchOperation.m */; };
 		5AB5C7CD19E8DF400067AC6C /* FOOTweetrSyncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7CC19E8DF400067AC6C /* FOOTweetrSyncer.m */; };
 		5AB5C7D119E8E4D20067AC6C /* FOODispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7D019E8E4D20067AC6C /* FOODispatcher.m */; };
+		5AB5C7D319E8E6180067AC6C /* FOOTweetrSyncerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7D219E8E6180067AC6C /* FOOTweetrSyncerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		5AB5C7CC19E8DF400067AC6C /* FOOTweetrSyncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrSyncer.m; path = src/FOOTweetrSyncer.m; sourceTree = "<group>"; };
 		5AB5C7CF19E8E4D20067AC6C /* FOODispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOODispatcher.h; path = src/FOODispatcher.h; sourceTree = "<group>"; };
 		5AB5C7D019E8E4D20067AC6C /* FOODispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOODispatcher.m; path = src/FOODispatcher.m; sourceTree = "<group>"; };
+		5AB5C7D219E8E6180067AC6C /* FOOTweetrSyncerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrSyncerTests.m; path = test/FOOTweetrSyncerTests.m; sourceTree = "<group>"; };
 		656CC97A974C451DAB91987C /* Pods-ios-foo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-foo.xcconfig"; path = "Pods/Pods-ios-foo.xcconfig"; sourceTree = "<group>"; };
 		C97736658C4F434CAA86E9BF /* libPods-ios-foo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-foo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-fooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,6 +279,7 @@
 		5AB5C7CE19E8DF430067AC6C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5AB5C7D219E8E6180067AC6C /* FOOTweetrSyncerTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AB5C7D319E8E6180067AC6C /* FOOTweetrSyncerTests.m in Sources */,
 				5AB5C7BF19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m in Sources */,
 				5AB5C7AE19E8C17F0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m in Sources */,
 			);
