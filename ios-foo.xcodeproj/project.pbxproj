@@ -30,8 +30,6 @@
 		5AB5C7B219E8C3B60067AC6C /* FOOTweetrListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B119E8C3B60067AC6C /* FOOTweetrListingViewController.m */; };
 		5AB5C7B519E8C4E60067AC6C /* FOOTweetrListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B419E8C4E60067AC6C /* FOOTweetrListingView.m */; };
 		5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7B719E8C5C70067AC6C /* FOOTweetrRecord.m */; };
-		5AB5C7BB19E8C65E0067AC6C /* FOOTweetrListingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7BA19E8C65E0067AC6C /* FOOTweetrListingViewModel.m */; };
-		5AB5C7BF19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */; };
 		5AB5C7C319E8C9690067AC6C /* FOOTweetrModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C219E8C9690067AC6C /* FOOTweetrModel.m */; };
 		5AB5C7C619E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C519E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m */; };
 		5AB5C7CA19E8D94A0067AC6C /* FOOTweetrFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C7C919E8D94A0067AC6C /* FOOTweetrFetchOperation.m */; };
@@ -89,9 +87,6 @@
 		5AB5C7B419E8C4E60067AC6C /* FOOTweetrListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingView.m; path = src/FOOTweetrListingView.m; sourceTree = "<group>"; };
 		5AB5C7B619E8C5C70067AC6C /* FOOTweetrRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrRecord.h; path = src/FOOTweetrRecord.h; sourceTree = "<group>"; };
 		5AB5C7B719E8C5C70067AC6C /* FOOTweetrRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrRecord.m; path = src/FOOTweetrRecord.m; sourceTree = "<group>"; };
-		5AB5C7B919E8C65E0067AC6C /* FOOTweetrListingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrListingViewModel.h; path = src/FOOTweetrListingViewModel.h; sourceTree = "<group>"; };
-		5AB5C7BA19E8C65E0067AC6C /* FOOTweetrListingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewModel.m; path = src/FOOTweetrListingViewModel.m; sourceTree = "<group>"; };
-		5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingViewModelTests.m; path = test/FOOTweetrListingViewModelTests.m; sourceTree = "<group>"; };
 		5AB5C7C019E8C6D00067AC6C /* FOOTweetrRequestor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FOOTweetrRequestor.h; path = src/FOOTweetrRequestor.h; sourceTree = "<group>"; };
 		5AB5C7C119E8C9690067AC6C /* FOOTweetrModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrModel.h; path = src/FOOTweetrModel.h; sourceTree = "<group>"; };
 		5AB5C7C219E8C9690067AC6C /* FOOTweetrModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrModel.m; path = src/FOOTweetrModel.m; sourceTree = "<group>"; };
@@ -285,8 +280,6 @@
 				5AB5C7B119E8C3B60067AC6C /* FOOTweetrListingViewController.m */,
 				5AB5C7B319E8C4E60067AC6C /* FOOTweetrListingView.h */,
 				5AB5C7B419E8C4E60067AC6C /* FOOTweetrListingView.m */,
-				5AB5C7B919E8C65E0067AC6C /* FOOTweetrListingViewModel.h */,
-				5AB5C7BA19E8C65E0067AC6C /* FOOTweetrListingViewModel.m */,
 				5AB5C7C019E8C6D00067AC6C /* FOOTweetrRequestor.h */,
 				5AB5C7C419E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.h */,
 				5AB5C7C519E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m */,
@@ -297,7 +290,6 @@
 		5AB5C7BD19E8C6840067AC6C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				5AB5C7BE19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -493,7 +485,6 @@
 				5AB5C7D119E8E4D20067AC6C /* FOODispatcher.m in Sources */,
 				5AF36CAE19E8F4060085C737 /* FOOTweetrRecordCoreDataAdapter.m in Sources */,
 				5AB5C7CD19E8DF400067AC6C /* FOOTweetrSyncer.m in Sources */,
-				5AB5C7BB19E8C65E0067AC6C /* FOOTweetrListingViewModel.m in Sources */,
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
 				5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */,
 				1F11A8EF1A170494006CC7BE /* FOORepeatingTimer.m in Sources */,
@@ -518,7 +509,6 @@
 			files = (
 				5AF36CB019E8F6C70085C737 /* FOODispatcherTests.m in Sources */,
 				5AB5C7D319E8E6180067AC6C /* FOOTweetrSyncerTests.m in Sources */,
-				5AB5C7BF19E8C6950067AC6C /* FOOTweetrListingViewModelTests.m in Sources */,
 				5AF36CA819E8F1AB0085C737 /* FOOTweetrFetchOperationTests.m in Sources */,
 				5AB5C7AE19E8C17F0067AC6C /* FOONSDocumentsDirectoryLocatorTests.m in Sources */,
 			);

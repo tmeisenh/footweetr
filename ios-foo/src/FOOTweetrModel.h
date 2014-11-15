@@ -2,7 +2,12 @@
 
 @protocol FOOTweetrModelDelegate <NSObject>
 
-- (void)dateUpdated;
+- (void)dataInserted:(NSArray *)paths;
+- (void)dataRemoved:(NSArray *)paths;
+- (void)dataUpdated:(NSArray *)paths;
+
+- (void)beginUpdate;
+- (void)endUpdate;
 
 @end
 
@@ -14,6 +19,7 @@
 - (instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)context
                                       syncer:(FOOTweetrSyncer *)syncer;
 
+- (void)deleteAll;
 - (NSArray *)fetchAllTweetrRecords;
 - (void)requestSync;
 

@@ -29,7 +29,7 @@
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                    managedObjectContext:managedObjectContext
                                                      sectionNameKeyPath:nil
-                                                              cacheName:@"metaDataCache"];
+                                                              cacheName:nil];
     self.frc.delegate = self;
 }
 
@@ -43,16 +43,52 @@
     return [NSString stringWithFormat:@"%@_%i", text, number];
 }
 
--(void)requestSync {
-    [self.syncer sync];
+-(void)deleteAll {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([FOOCoreDataTweetrRecord class])];
+
+    NSError *error;
+    NSArray *fetchedObjects = [self.context executeFetchRequest:request error:&error];
+    for (NSManagedObject *object in fetchedObjects)     {
+        [self.context deleteObject:object];
+    }
+    [self.context save:&error];
 }
 
+-(void)requestSync {
+    [self.syncer scheduleNewSyncJobs];
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.delegate beginUpdate];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.delegate endUpdate];
+}
+
+
 -(void)controller:(NSFetchedResultsController *)controller
-  didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+  didChangeObject:(id)anObject
+      atIndexPath:(NSIndexPath *)indexPath
     forChangeType:(NSFetchedResultsChangeType)type
      newIndexPath:(NSIndexPath *)newIndexPath {
     
-    [self.delegate dateUpdated];
+    switch (type) {
+        case NSFetchedResultsChangeInsert: {
+            [self.delegate dataInserted:@[newIndexPath]];
+            break;
+        }
+        case NSFetchedResultsChangeDelete: {
+            [self.delegate dataRemoved:@[indexPath]];
+            break;
+        }
+        case NSFetchedResultsChangeUpdate: {
+            [self.delegate dataUpdated:@[newIndexPath]];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 @end

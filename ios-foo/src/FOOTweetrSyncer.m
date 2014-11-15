@@ -57,15 +57,19 @@
 }
 
 - (void)scheduleNewSyncJobs {
-    FOOTweetrFetchOperation *operation = [self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator];
-    operation.delegate = self;
-    [self.operationQueue addOperation:operation];
+    if ([self areOperationsRunning]) {
+        FOOTweetrFetchOperation *operation = [self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator];
+        operation.delegate = self;
+        [self.operationQueue addOperation:operation];
+    }
 }
 
 - (void)timerFired {
-    if ([self.operationQueue operationCount] <= 0) {
-        [self scheduleNewSyncJobs];
-    }
+    [self scheduleNewSyncJobs];
+}
+
+- (BOOL)areOperationsRunning {
+    return [self.operationQueue operationCount] <= 0;
 }
 
 /*

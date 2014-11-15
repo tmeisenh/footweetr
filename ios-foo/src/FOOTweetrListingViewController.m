@@ -1,11 +1,10 @@
 #import "FOOTweetrListingViewController.h"
 
 #import "FOOTweetrListingView.h"
-#import "FOOTweetrListingViewModel.h"
 
-@interface FOOTweetrListingViewController () <FOOTweetrListingViewDelegate, FOOTweetrListingViewModelDelegate>
+@interface FOOTweetrListingViewController () <FOOTweetrListingViewDelegate, FOOTweetrModelDelegate>
 
-@property (nonatomic) FOOTweetrListingViewModel *viewModel;
+@property (nonatomic) FOOTweetrModel *model;
 @property (nonatomic) FOOTweetrListingView *listingView;
 @end
 
@@ -13,8 +12,8 @@
 
 - (instancetype)initWithTweetrModel:(FOOTweetrModel *)tweetrModel {
     if (self = [super initWithNibName:nil bundle:nil]) {
-        self.viewModel = [[FOOTweetrListingViewModel alloc] initWithTweetrModel:tweetrModel];
-        self.viewModel.delegate = self;
+        self.model = tweetrModel;
+        self.model.delegate = self;
     }
     return self;
 }
@@ -24,7 +23,7 @@
     
     self.listingView = [[FOOTweetrListingView alloc] initWithFrame:CGRectZero];
     self.listingView.delegate = self;
-    [self.listingView updateViewWithTweetrRecords:[self.viewModel fetchAllTweetrRecords]];
+    [self.listingView updateViewWithTweetrRecords:[self.model fetchAllTweetrRecords]];
     self.view = self.listingView;
 }
 
@@ -38,12 +37,40 @@
     // do something like a popover
 }
 
--(void)updateRequested {
-    [self.viewModel requestSync];
+-(void)deletePressed {
+    [self.model deleteAll];
 }
 
--(void)dataChanged {
-    [self.listingView updateViewWithTweetrRecords:[self.viewModel fetchAllTweetrRecords]];
+-(void)updateRequested {
+    [self.model requestSync];
+}
+
+- (void)beginUpdate {
+    [self.listingView beginUpdate];
+}
+
+- (void)endUpdate {
+    [self.listingView endUpdate];
+}
+
+- (void)dataUpdated:(NSArray *)paths {
+    [self.listingView updateRows:paths];
+}
+
+- (void)dataInserted:(NSArray *)paths {
+    [self.listingView insertRows:paths];
+}
+
+- (void)dataRemoved:(NSArray *)paths {
+    [self.listingView removeRows:paths];
+}
+
+-(NSInteger)dataCount {
+    return [[self.model fetchAllTweetrRecords] count];
+}
+
+- (FOOTweetrRecord *)dataForIndex:(NSInteger)index {
+    return [self.model fetchAllTweetrRecords][index];
 }
 
 @end

@@ -4,6 +4,11 @@
 
 - (void)selectedRecord:(FOOTweetrRecord *)record;
 - (void)updateRequested;
+- (void)deletePressed;
+
+- (FOOTweetrRecord *)dataForIndex:(NSInteger)index;
+- (NSInteger)dataCount;
+
 @end
 
 @interface FOOTweetrListingView : UIView
@@ -12,4 +17,9 @@
 
 - (void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords;
 
+- (void)updateRows:(NSArray *)paths;
+- (void)insertRows:(NSArray *)paths;
+- (void)removeRows:(NSArray *)paths;
+- (void)beginUpdate;
+- (void)endUpdate;
 @end

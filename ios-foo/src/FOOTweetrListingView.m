@@ -6,10 +6,8 @@
 
 @interface FOOTweetrListingView() <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic) NSArray *data;
 @property (nonatomic) UITableView *listing;
 @property (nonatomic) UIRefreshControl *refreshControl;
-
 @end
 
 @implementation FOOTweetrListingView
@@ -25,6 +23,7 @@
         title.textColor = [UIColor blackColor];
         title.text = @"*********** TWEETR!! ***********";
         
+        
         [self addSubview:title];
         [title makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.left);
@@ -32,6 +31,24 @@
             make.top.equalTo(self.top);
             make.height.equalTo(@65);
         }];
+        
+        UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [deleteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [deleteButton setTitleColor:[[UIColor blackColor] colorWithAlphaComponent:0.2f]
+                           forState:UIControlStateHighlighted];
+        [deleteButton setTitle:@"Delete All Records" forState:UIControlStateNormal];
+        [deleteButton addTarget:self
+                         action:@selector(deletePressed)
+               forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:deleteButton];
+        [deleteButton makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(title.bottom).offset(25);
+            make.centerX.equalTo(self.centerX);
+            make.height.equalTo(@45);
+        }];
+        
+        
         
         self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectZero];
         [self.refreshControl addTarget:self action:@selector(pullToRefresh) forControlEvents:UIControlEventValueChanged];
@@ -52,7 +69,7 @@
 
         
         [self.listing makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(title.bottom).offset(45);
+            make.top.equalTo(deleteButton.bottom).offset(45);
             make.centerX.equalTo(self.centerX);
             make.width.equalTo(self.width).multipliedBy(twoThird);
             make.bottom.equalTo(self.bottom).offset(-100);
@@ -63,13 +80,36 @@
     return self;
 }
 
+- (void)beginUpdate {
+    [self.listing beginUpdates];
+}
+
+- (void)endUpdate {
+    [self.listing endUpdates];
+}
+
+-(void)insertRows:(NSArray *)paths {
+    [self.listing insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)removeRows:(NSArray *)paths {
+    [self.listing deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)updateRows:(NSArray *)paths {
+    
+}
+
+- (void)deletePressed {
+    [self.delegate deletePressed];
+}
+
 #pragma mark UITableViewDelegate
 
 -(void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords {
     if ([self.refreshControl isRefreshing]) {
         [self.refreshControl endRefreshing];
     }
-    self.data = tweetrRecords;
     [self.listing reloadData];
 }
 
@@ -78,7 +118,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FOOTweetrRecord *record = self.data[indexPath.row];
+    FOOTweetrRecord *record = [self.delegate dataForIndex:indexPath.row];
     [self.delegate selectedRecord:record];
 }
 
@@ -86,13 +126,13 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FOOTweetrListingViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FOOTweetrListingViewCellReuseIdentifier];
-    FOOTweetrRecord *record = self.data[indexPath.row];
+    FOOTweetrRecord *record = [self.delegate dataForIndex:indexPath.row];
     [cell setTitle:record.title user:record.user content:record.content];
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.data.count;
+    return [self.delegate dataCount];
 }
 
 - (void)pullToRefresh {

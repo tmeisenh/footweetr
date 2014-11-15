@@ -12,7 +12,7 @@
 
 - (void)sync;
 
-
+- (void)scheduleNewSyncJobs;
 
 /*
  How core data threaded works.
