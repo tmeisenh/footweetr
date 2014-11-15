@@ -81,6 +81,9 @@
 }
 
 - (void)beginUpdate {
+    if ([self.refreshControl isRefreshing]) {
+        [self.refreshControl endRefreshing];
+    }
     [self.listing beginUpdates];
 }
 
