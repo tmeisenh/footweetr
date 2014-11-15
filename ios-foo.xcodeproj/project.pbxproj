@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1549BAFEC08C41158C58AE1C /* libPods-ios-foo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C97736658C4F434CAA86E9BF /* libPods-ios-foo.a */; };
+		1F11A8EF1A170494006CC7BE /* FOORepeatingTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11A8EE1A170494006CC7BE /* FOORepeatingTimer.m */; };
 		2E3D577952F64BC08F3C5DB7 /* libPods-ios-fooTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */; };
 		5AB5C74219E8A94B0067AC6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB5C74119E8A94B0067AC6C /* Foundation.framework */; };
 		5AB5C74419E8A94B0067AC6C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB5C74319E8A94B0067AC6C /* CoreGraphics.framework */; };
@@ -58,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F11A8ED1A170494006CC7BE /* FOORepeatingTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOORepeatingTimer.h; path = src/FOORepeatingTimer.h; sourceTree = "<group>"; };
+		1F11A8EE1A170494006CC7BE /* FOORepeatingTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOORepeatingTimer.m; path = src/FOORepeatingTimer.m; sourceTree = "<group>"; };
 		5AB5C73E19E8A94B0067AC6C /* ios-foo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-foo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB5C74119E8A94B0067AC6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5AB5C74319E8A94B0067AC6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -259,6 +262,8 @@
 				5AF36CA519E8EFAC0085C737 /* FOOBackgroundCoreDataFactory.m */,
 				5AF36CB419E903BF0085C737 /* FOOUnixTimeStampNow.h */,
 				5AF36CB519E903BF0085C737 /* FOOUnixTimeStampNow.m */,
+				1F11A8ED1A170494006CC7BE /* FOORepeatingTimer.h */,
+				1F11A8EE1A170494006CC7BE /* FOORepeatingTimer.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				5AB5C7BB19E8C65E0067AC6C /* FOOTweetrListingViewModel.m in Sources */,
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
 				5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */,
+				1F11A8EF1A170494006CC7BE /* FOORepeatingTimer.m in Sources */,
 				5AB5C75719E8A94B0067AC6C /* ios_foo.xcdatamodeld in Sources */,
 				5AB5C7C319E8C9690067AC6C /* FOOTweetrModel.m in Sources */,
 				5AF36CAB19E8F3AC0085C737 /* FOOCoreDataTweetrRecord.m in Sources */,
