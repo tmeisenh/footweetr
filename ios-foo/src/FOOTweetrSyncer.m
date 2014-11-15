@@ -81,6 +81,11 @@
                                   object:context];
 }
 
+/* 
+ each operation has its own context and we only allow one operation to run at a time
+ so our strategy is ok for managing the context merges
+ */
+
 - (void)mergeCoreData:(NSNotification *)notification {
     // avoid anything coming from our own context.
     if (![notification.object isEqual:self.managedObjectContext]) {
