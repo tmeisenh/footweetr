@@ -1,13 +1,19 @@
-//
-//  FOORepeatingTimer.h
-//  ios-foo
-//
-//  Created by Travis Meisenheimer on 11/14/14.
-//  Copyright (c) 2014 asynchrony.com. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
+@protocol FOORepeatingTimerDelegate <NSObject>
+
+- (void)timerFired;
+
+@end
+
 @interface FOORepeatingTimer : NSObject
+
+@property (nonatomic) id <FOORepeatingTimerDelegate> delegate;
+
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
+- (instancetype)initWithTimerInterval:(NSTimeInterval)timerInterval;
+
+- (void)startTimer;
+- (void)stopTimer;
 
 @end
