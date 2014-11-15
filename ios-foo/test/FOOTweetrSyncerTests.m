@@ -13,9 +13,9 @@
     NSOperationQueue *queue;
     FOOTweetrSyncer *testObject;
     FOOTweetrFetchOperation *operation;
+    FOORepeatingTimer *timer;
     id <FOOTweetrFetchOperationDelegate>operationDelegate;
-
-    
+    id <FOORepeatingTimerDelegate>timerDelegate;
 }
 @end
 
@@ -24,7 +24,9 @@
                                   dispatcher:(FOODispatcher *)dispatcher
                             operationFactory:(FOOTweetrFetchOperationFactory *)operationFactory
                           notificationCenter:(NSNotificationCenter *)notificationCenter
-                              operationQueue:(NSOperationQueue *)operationQueue;
+                              operationQueue:(NSOperationQueue *)operationQueue
+                              repeatingTimer:(FOORepeatingTimer *)repeatingTimer;
+
 @end
 
 
@@ -44,14 +46,19 @@
 
     operation = mock([FOOTweetrFetchOperation class]);
     [when([operationFactory createOperation:coordinator]) thenReturn:operation];
+    timer = mock([FOORepeatingTimer class]);
+    
     when([operation setDelegate:capture(&operationDelegate)]);
+    when([timer setDelegate:capture(&timerDelegate)]);
     
     testObject = [[FOOTweetrSyncer alloc] initWithManagedObjectContext:coredata
                                                             dispatcher:dispatcher
                                                       operationFactory:operationFactory
                                                     notificationCenter:testCenter
-                                                        operationQueue:queue];
+                                                        operationQueue:queue
+                                                        repeatingTimer:timer];
 }
+
 /*
  Since this class needs to listen for notifications, we need to be
  specific with its context.  Our tests will push notifications to
@@ -60,19 +67,40 @@
  the test and real instance (via appdelegate) would get the notification.
  */
 
-- (void)testSync_AddsOperationToQueue {
+- (void)testSync_SchedulesSyncToRun {
     [testObject sync];
+    
+    verifyCalled([timer startTimer]);
+}
+
+- (void)testWhenTimerFires_ThenOperationsAreRun {
+    [timerDelegate timerFired];
     
     verifyCalled([queue addOperation:operation]);
 }
 
+- (void)testWhenTimerFires_AndPreviousOperationsAreRunning_ThenNewOperationsAreNotScheduled {
+    [when([queue operationCount]) thenReturn:@1];
+    
+    [timerDelegate timerFired];
+    
+    verifyNever([queue addOperation:any()]);
+}
+
+- (void)testWhenTimerFires_AndPreviousOperationsAreNotRunning_ThenNewOperationsAreNotScheduled {
+    [when([queue operationCount]) thenReturn:@0];
+    
+    [timerDelegate timerFired];
+    
+    verifyCalled([queue addOperation:operation]);
+}
 
 - (void)testWhenBackgroundOperationSavesContext_ThenItIsMergedOnMainThread {
     NSManagedObjectContext *secondContext = mock([NSManagedObjectContext class]);
     FOODispatcherMainthreadBlock block = NULL;
     when([dispatcher dispatchOnMainThreadBlock:capture(&block)]);
     
-    [testObject sync];
+    [timerDelegate timerFired];
     [operationDelegate observeContextForChanges:secondContext];
     
     
@@ -91,7 +119,7 @@
     FOODispatcherMainthreadBlock block = NULL;
     when([dispatcher dispatchOnMainThreadBlock:capture(&block)]);
     
-    [testObject sync];
+    [timerDelegate timerFired];
     [operationDelegate observeContextForChanges:secondContext];
     
     
@@ -113,7 +141,7 @@
 - (void)testWhenMainContextSaves_ThenSaveEventIsIgnored {
     NSManagedObjectContext *secondContext = mock([NSManagedObjectContext class]);
     
-    [testObject sync];
+    [timerDelegate timerFired];
     [operationDelegate observeContextForChanges:secondContext];
     [testCenter postNotificationName:NSManagedObjectContextDidSaveNotification
                               object:nil

@@ -23,7 +23,7 @@
 @property (nonatomic) id <FOOTweetrRequestor> requestor;
 @property (nonatomic) FOOTweetrFetchOperationFactory *operationFactory;
 @property (nonatomic) FOOTweetrSyncer *syncer;
-
+@property (nonatomic) FOORepeatingTimer *timer;
 @end
 
 @implementation FOOAppDelegate
@@ -43,9 +43,12 @@
     self.requestor = [[FOOFakeRequestor alloc] init];
     self.operationFactory = [[FOOTweetrFetchOperationFactory alloc] initWithTweetrRequestor:self.requestor
                                                                   backgroundCoreDataFactory:self.backgroundCoreDataFactory];
+    
+    
+    self.timer = [[FOORepeatingTimer alloc] initWithTimerInterval:5];
     self.syncer = [[FOOTweetrSyncer alloc] initWithManagedObjectContext:self.mainContext
                                                              dispatcher:self.dispatcher
-                                                       operationFactory:self.operationFactory];
+                                                       operationFactory:self.operationFactory repeatingTimer:self.timer];
     
     FOOTweetrModel *listingModel = [[FOOTweetrModel alloc] initWithManagedObjectContext:self.mainContext syncer:self.syncer];
     

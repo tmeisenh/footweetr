@@ -1,12 +1,14 @@
 #import "FOOTweetrRequestor.h"
 #import "FOODispatcher.h"
 #import "FOOTweetrFetchOperationFactory.h"
+#import "FOORepeatingTimer.h"
 
 @interface FOOTweetrSyncer : NSObject
 
 - (instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
                                   dispatcher:(FOODispatcher *)dispatcher
-                            operationFactory:(FOOTweetrFetchOperationFactory *)operationFactory;
+                            operationFactory:(FOOTweetrFetchOperationFactory *)operationFactory
+                              repeatingTimer:(FOORepeatingTimer *)repeatingTimer;
 
 - (void)sync;
 

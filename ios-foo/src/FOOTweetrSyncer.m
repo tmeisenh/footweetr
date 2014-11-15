@@ -2,21 +2,22 @@
 
 #import "FOOTweetrFetchOperation.h"
 
-@interface FOOTweetrSyncer() <FOOTweetrFetchOperationDelegate>
+@interface FOOTweetrSyncer() <FOOTweetrFetchOperationDelegate, FOORepeatingTimerDelegate>
 
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) FOODispatcher *dispatcher;
 @property (nonatomic) FOOTweetrFetchOperationFactory *operationFactory;
 @property (nonatomic) NSOperationQueue *operationQueue;
 @property (nonatomic) NSNotificationCenter *notificationCenter;
-
+@property (nonatomic) FOORepeatingTimer *repeatingTimer;
 @end
 
 @implementation FOOTweetrSyncer
 
 - (instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
                                   dispatcher:(FOODispatcher *)dispatcher
-                            operationFactory:(FOOTweetrFetchOperationFactory *)operationFactory {
+                            operationFactory:(FOOTweetrFetchOperationFactory *)operationFactory
+                              repeatingTimer:(FOORepeatingTimer *)repeatingTimer {
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [self.operationQueue setName:@"TweetrSyncer"];
@@ -26,7 +27,8 @@
                                    dispatcher:dispatcher
                              operationFactory:operationFactory
                            notificationCenter:[NSNotificationCenter defaultCenter]
-                               operationQueue:queue];
+                               operationQueue:queue
+                               repeatingTimer:repeatingTimer];
 }
 
 
@@ -34,7 +36,8 @@
                                   dispatcher:(FOODispatcher *)dispatcher
                             operationFactory:(FOOTweetrFetchOperationFactory *)operationFactory
                           notificationCenter:(NSNotificationCenter *)notificationCenter
-                              operationQueue:(NSOperationQueue *)operationQueue {
+                              operationQueue:(NSOperationQueue *)operationQueue
+                              repeatingTimer:(FOORepeatingTimer *)repeatingTimer {
     
     if (self = [super init]) {
         self.managedObjectContext = managedObjectContext;
@@ -42,15 +45,27 @@
         self.operationFactory = operationFactory;
         self.notificationCenter = notificationCenter;
         self.operationQueue = operationQueue;
+        self.repeatingTimer = repeatingTimer;
+        self.repeatingTimer.delegate = self;
     }
     return self;
 }
 
 
 - (void)sync {
+    [self.repeatingTimer startTimer];
+}
+
+- (void)scheduleNewSyncJobs {
     FOOTweetrFetchOperation *operation = [self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator];
     operation.delegate = self;
     [self.operationQueue addOperation:operation];
+}
+
+- (void)timerFired {
+    if ([self.operationQueue operationCount] <= 0) {
+        [self scheduleNewSyncJobs];
+    }
 }
 
 /*
