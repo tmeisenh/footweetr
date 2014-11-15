@@ -79,22 +79,6 @@
     verifyCalled([queue addOperation:operation]);
 }
 
-- (void)testWhenTimerFires_AndPreviousOperationsAreRunning_ThenNewOperationsAreNotScheduled {
-    [when([queue operationCount]) thenReturn:@1];
-    
-    [timerDelegate timerFired];
-    
-    verifyNever([queue addOperation:any()]);
-}
-
-- (void)testWhenTimerFires_AndPreviousOperationsAreNotRunning_ThenNewOperationsAreNotScheduled {
-    [when([queue operationCount]) thenReturn:@0];
-    
-    [timerDelegate timerFired];
-    
-    verifyCalled([queue addOperation:operation]);
-}
-
 - (void)testWhenBackgroundOperationSavesContext_ThenItIsMergedOnMainThread {
     NSManagedObjectContext *secondContext = mock([NSManagedObjectContext class]);
     FOODispatcherMainthreadBlock block = NULL;

@@ -57,20 +57,15 @@
 }
 
 - (void)scheduleNewSyncJobs {
-    if ([self areOperationsRunning]) {
-        FOOTweetrFetchOperation *operation = [self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator];
-        operation.delegate = self;
-        [self.operationQueue addOperation:operation];
-    }
+    FOOTweetrFetchOperation *operation = [self.operationFactory createOperation:self.managedObjectContext.persistentStoreCoordinator];
+    operation.delegate = self;
+    [self.operationQueue addOperation:operation];
 }
 
 - (void)timerFired {
     [self scheduleNewSyncJobs];
 }
 
-- (BOOL)areOperationsRunning {
-    return [self.operationQueue operationCount] <= 0;
-}
 
 /*
  WorkAround to avoid listening for notifications on nil.
