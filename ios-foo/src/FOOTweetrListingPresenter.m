@@ -42,7 +42,7 @@
     [self.model deleteAll];
 }
 
-- (void)swipeToDelete:(NSInteger)index {
+- (void)swipeToDelete:(NSIndexPath *)index {
     [self.model deleteRecordAtIndex:index];
 }
 
