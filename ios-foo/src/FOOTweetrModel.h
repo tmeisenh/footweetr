@@ -20,7 +20,7 @@
                                       syncer:(FOOTweetrSyncer *)syncer;
 
 - (void)deleteAll;
-- (void)deleteRecordAtIndex:(NSUInteger)index;
+- (void)deleteRecordAtIndex:(NSIndexPath *)index;
 - (NSArray *)fetchAllTweetrRecords;
 - (void)requestSync;
 

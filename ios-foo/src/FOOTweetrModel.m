@@ -54,8 +54,8 @@
     [self.context save:&error];
 }
 
-- (void)deleteRecordAtIndex:(NSUInteger)index {
-    FOOCoreDataTweetrRecord *record = [[self fetchAllTweetrRecords] objectAtIndex:index];
+- (void)deleteRecordAtIndex:(NSIndexPath *)index {
+    FOOCoreDataTweetrRecord *record = [self.frc objectAtIndexPath:index];
     [self.context deleteObject:record];
     [self.context save:nil];
 }

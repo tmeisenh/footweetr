@@ -128,8 +128,11 @@
 }
 
 - (void)testWhenRecordIsSwipedForDeletion_ThenModelDeletesRecord {
-    [[self viewDelegate] swipeToDelete:4];
-    verifyCalled([model deleteRecordAtIndex:4]);
+    NSIndexPath * path = mock([NSIndexPath class]);
+    
+    [[self viewDelegate] swipeToDelete:path];
+    
+    verifyCalled([model deleteRecordAtIndex:path]);
 }
 
 @end

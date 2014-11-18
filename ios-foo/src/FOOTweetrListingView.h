@@ -8,7 +8,7 @@
 
 - (FOOTweetrRecord *)dataForIndex:(NSInteger)index;
 - (NSInteger)dataCount;
-- (void)swipeToDelete:(NSInteger)index;
+- (void)swipeToDelete:(NSIndexPath *)index;
 
 @end
 

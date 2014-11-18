@@ -169,7 +169,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.delegate swipeToDelete:indexPath.row];
+        [self.delegate swipeToDelete:indexPath];
     }
 }
 
