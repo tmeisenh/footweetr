@@ -34,6 +34,10 @@
     return (id <FOOTweetrListingViewDelegate>)testObject;
 }
 
+- (FOOTweetrRecord *)createRecord {
+    return mock([FOOTweetrRecord class]);
+}
+
 - (void)testWhenViewDidLoad_ThenViewIsInitiallyPopulated {
     
     NSArray *records = mock([NSArray class]);
@@ -57,17 +61,22 @@
     verifyCalled([viewModel refreshRequested]);
 }
 
-//@TODO rethink this
 - (void)testWhenViewRequestsDataCount_ThenModelReturnsDataCount {
-    [[self viewDelegate] dataCount];
+    NSArray *records = @[[self createRecord], [self createRecord]];
+    [when([model fetchAllTweetrRecords]) thenReturn:records];
     
-    verifyCalled([model fetchAllTweetrRecords]);
+    XCTAssertEqual(2, [[self viewDelegate] dataCount]);
 }
 
 - (void)testWhenViewRequestsDataAtIndex_ThenModelFetchesIt {
-    [[self viewDelegate] dataForIndex:0];
+
+    FOOTweetrRecord *record0 = [self createRecord];
+    FOOTweetrRecord *record1 = [self createRecord];
+    NSArray *records = @[record0, record1];
+    [when([model fetchAllTweetrRecords]) thenReturn:records];
+
     
-    verifyCalled([model fetchAllTweetrRecords]);
+    XCTAssertEqualObjects(record1, [[self viewDelegate] dataForIndex:1]);
 }
 
 - (void)testWhenModelStartsUpdating_ThenViewIsUpdated {
