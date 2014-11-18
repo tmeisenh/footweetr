@@ -97,9 +97,12 @@
 }
 
 - (void)testWhenModelFinishesUpdating_ThenViewIsUpdated {
+    [when([model fetchAllTweetrRecords]) thenReturn:@[[self createRecord], [self createRecord]]];
+    
     [[self modelDelegate] endUpdate];
     
     verifyCalled([view endUpdate]);
+    verifyCalled([view updateNumberOfRecords:2]);
 }
 
 - (void)testWhenModelUpdatesData_ThenViewIsUpdated {
@@ -122,6 +125,11 @@
     [[self modelDelegate] dataInserted:paths];
     
     verifyCalled([view insertRows:paths]);
+}
+
+- (void)testWhenRecordIsSwipedForDeletion_ThenModelDeletesRecord {
+    [[self viewDelegate] swipeToDelete:4];
+    verifyCalled([model deleteRecordAtIndex:4]);
 }
 
 @end

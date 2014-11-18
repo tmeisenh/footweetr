@@ -8,6 +8,7 @@
 
 @property (nonatomic) UITableView *listing;
 @property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) UILabel *numberOfRecordsLabel;
 @end
 
 @implementation FOOTweetrListingView
@@ -48,7 +49,19 @@
             make.height.equalTo(@45);
         }];
         
+        UILabel *numberOfRecordsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        numberOfRecordsLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        numberOfRecordsLabel.numberOfLines = 1;
+        numberOfRecordsLabel.textAlignment = NSTextAlignmentCenter;
+        numberOfRecordsLabel.textColor = [UIColor blackColor];
+        [self addSubview:numberOfRecordsLabel];
+        self.numberOfRecordsLabel = numberOfRecordsLabel;
         
+        [numberOfRecordsLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(deleteButton.bottom).offset(25);
+            make.centerX.equalTo(self.centerX);
+            make.height.equalTo(@45);
+        }];
         
         self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectZero];
         [self.refreshControl addTarget:self action:@selector(pullToRefresh) forControlEvents:UIControlEventValueChanged];
@@ -59,7 +72,7 @@
         self.listing.backgroundColor = [UIColor clearColor];
         self.listing.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.listing.allowsMultipleSelection = NO;
-        self.listing.allowsSelectionDuringEditing = NO;
+        self.listing.allowsSelectionDuringEditing = YES;
         [self.listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:FOOTweetrListingViewCellReuseIdentifier];
         [self.listing addSubview:self.refreshControl];
         
@@ -69,7 +82,7 @@
 
         
         [self.listing makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(deleteButton.bottom).offset(45);
+            make.top.equalTo(numberOfRecordsLabel.bottom).offset(45);
             make.centerX.equalTo(self.centerX);
             make.width.equalTo(self.width).multipliedBy(twoThird);
             make.bottom.equalTo(self.bottom).offset(-100);
@@ -93,25 +106,34 @@
 }
 
 -(void)insertRows:(NSArray *)paths {
-    [self.listing insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [self.listing insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)removeRows:(NSArray *)paths {
-    [self.listing deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [self.listing deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)updateRows:(NSArray *)paths {
-    
+    /* do what? */
+}
+
+-(void)updateNumberOfRecords:(NSInteger)numberOfRecords {
+    self.numberOfRecordsLabel.text = [NSString stringWithFormat:@"Number of records %i", numberOfRecords];
 }
 
 - (void)deletePressed {
     [self.delegate deletePressed];
 }
 
+- (void)pullToRefresh {
+    [self.delegate updateRequested];
+}
+
 #pragma mark UITableViewDelegate
 
 -(void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords {
     [self.listing reloadData];
+    [self updateNumberOfRecords:[tweetrRecords count]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -137,8 +159,18 @@
     return [self.delegate dataCount];
 }
 
-- (void)pullToRefresh {
-    [self.delegate updateRequested];
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.delegate swipeToDelete:indexPath.row];
+    }
 }
 
 @end

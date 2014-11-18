@@ -42,6 +42,10 @@
     [self.model deleteAll];
 }
 
+- (void)swipeToDelete:(NSInteger)index {
+    [self.model deleteRecordAtIndex:index];
+}
+
 -(void)updateRequested {
     [self.viewModel refreshRequested];
     [self.model requestSync];
@@ -67,6 +71,7 @@
 
 - (void)endUpdate {
     [self.view endUpdate];
+    [self.view updateNumberOfRecords:[self dataCount]];
 }
 
 - (void)dataUpdated:(NSArray *)paths {

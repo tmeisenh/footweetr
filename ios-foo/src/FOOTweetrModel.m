@@ -54,6 +54,12 @@
     [self.context save:&error];
 }
 
+- (void)deleteRecordAtIndex:(NSUInteger)index {
+    FOOCoreDataTweetrRecord *record = [[self fetchAllTweetrRecords] objectAtIndex:index];
+    [self.context deleteObject:record];
+    [self.context save:nil];
+}
+
 -(void)requestSync {
     [self.syncer scheduleNewSyncJobs];
 }
