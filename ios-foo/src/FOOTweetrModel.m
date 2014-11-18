@@ -2,9 +2,10 @@
 #import "FOOTweetrRecord.h"
 #import "FOOCoreDataTweetrRecord.h"
 
+#define  FOOTweetrModel_Cache @"TweetrCache"
+
 @interface FOOTweetrModel() <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic) NSManagedObjectContext *context;
 @property (nonatomic) NSFetchedResultsController *frc;
 @property (nonatomic) FOOTweetrSyncer *syncer;
 @end
@@ -15,27 +16,31 @@
                                      syncer:(FOOTweetrSyncer *)syncer {
     
     if (self = [super init]) {
-        self.context = context;
         self.syncer = syncer;
-        [self createFetchesResultsControllersWithManagedObjectContext:self.context];
+        [self createFetchesResultsControllersWithManagedObjectContext:context];
     }
     return self;
 }
 
 - (void)createFetchesResultsControllersWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([FOOCoreDataTweetrRecord class])];
+    [request setFetchBatchSize:20];
     NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES selector:@selector(caseInsensitiveCompare:)];
     [request setSortDescriptors:@[sorter]];
+    
+    /**
+     Having a cache seems buggy as hell when it comes to deleting either a single row
+     or all the records.  See README.md
+     */
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                    managedObjectContext:managedObjectContext
                                                      sectionNameKeyPath:nil
                                                               cacheName:nil];
     self.frc.delegate = self;
+    [self.frc performFetch:nil];
 }
 
 -(NSArray *)fetchAllTweetrRecords {
-    
-    [self.frc performFetch:nil];
     return self.frc.fetchedObjects;
 }
 
@@ -44,20 +49,18 @@
 }
 
 -(void)deleteAll {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([FOOCoreDataTweetrRecord class])];
 
-    NSError *error;
-    NSArray *fetchedObjects = [self.context executeFetchRequest:request error:&error];
+    NSArray *fetchedObjects = [self fetchAllTweetrRecords];
     for (NSManagedObject *object in fetchedObjects)     {
-        [self.context deleteObject:object];
+        [self.frc.managedObjectContext deleteObject:object];
     }
-    [self.context save:&error];
+    [self.frc.managedObjectContext save:nil];
 }
 
 - (void)deleteRecordAtIndex:(NSIndexPath *)index {
     FOOCoreDataTweetrRecord *record = [self.frc objectAtIndexPath:index];
-    [self.context deleteObject:record];
-    [self.context save:nil];
+    [self.frc.managedObjectContext deleteObject:record];
+    [self.frc.managedObjectContext save:nil];
 }
 
 -(void)requestSync {
