@@ -80,10 +80,11 @@
     return self;
 }
 
+- (void)refreshFinished {
+    [self.refreshControl endRefreshing];
+}
+
 - (void)beginUpdate {
-    if ([self.refreshControl isRefreshing]) {
-        [self.refreshControl endRefreshing];
-    }
     [self.listing beginUpdates];
 }
 
@@ -110,9 +111,6 @@
 #pragma mark UITableViewDelegate
 
 -(void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords {
-    if ([self.refreshControl isRefreshing]) {
-        [self.refreshControl endRefreshing];
-    }
     [self.listing reloadData];
 }
 
@@ -122,6 +120,7 @@
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     FOOTweetrRecord *record = [self.delegate dataForIndex:indexPath.row];
+    /* This could just as easily pass the index. */
     [self.delegate selectedRecord:record];
 }
 

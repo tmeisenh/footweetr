@@ -22,4 +22,5 @@
 - (void)removeRows:(NSArray *)paths;
 - (void)beginUpdate;
 - (void)endUpdate;
+- (void)refreshFinished;
 @end
