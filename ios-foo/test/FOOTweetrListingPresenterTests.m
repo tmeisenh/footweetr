@@ -45,7 +45,7 @@
     
     [testObject viewDidLoad];
     
-    verifyCalled([view updateViewWithTweetrRecords:records]);
+    verifyCalled([view reloadTableView]);
 }
 
 - (void)testWhenDeleteIsPressed_ThenModelDeletesAllRecords {

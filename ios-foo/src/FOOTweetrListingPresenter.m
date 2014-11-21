@@ -25,7 +25,7 @@
 }
 
 - (void)viewDidLoad {
-    [self.view updateViewWithTweetrRecords:[self.model fetchAllTweetrRecords]];
+    [self.view reloadTableView];
 }
 
 - (void)didReceiveMemoryWarning {

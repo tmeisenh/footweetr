@@ -131,9 +131,9 @@
 
 #pragma mark UITableViewDelegate
 
--(void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords {
+-(void)reloadTableView {
     [self.listing reloadData];
-    [self updateNumberOfRecords:[tweetrRecords count]];
+    [self updateNumberOfRecords:[self.delegate dataCount]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

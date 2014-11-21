@@ -16,7 +16,7 @@
 
 @property (nonatomic, weak) id <FOOTweetrListingViewDelegate>delegate;
 
-- (void)updateViewWithTweetrRecords:(NSArray *)tweetrRecords;
+- (void)reloadTableView;
 
 - (void)updateRows:(NSArray *)paths;
 - (void)insertRows:(NSArray *)paths;
