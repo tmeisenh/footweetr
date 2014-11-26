@@ -5,7 +5,7 @@
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithDocumentsDirectoryLocator:(FOONSDocumentsDirectoryLocator *)documentsDirectoryLocator;
 
-- (NSManagedObjectContext *)createManagedObjectContext;
-- (NSManagedObjectContext *)createInMemoryManagedObjectContext;
+- (NSManagedObjectContext *)createManagedObjectContextWithFileName:(NSString *)fileName;
+- (NSManagedObjectContext *)createInMemoryManagedObjectContextWithName:(NSString *)name;
 
 @end

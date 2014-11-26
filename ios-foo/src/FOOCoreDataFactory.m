@@ -15,51 +15,51 @@
     return self;
 }
 
-- (NSManagedObjectContext *)createManagedObjectContext {
-
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+- (NSManagedObjectContext *)createManagedObjectContextWithFileName:(NSString *)fileName {
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinatorWithName:fileName];
     NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [managedObjectContext setPersistentStoreCoordinator:coordinator];
     
     return managedObjectContext;
 }
 
-- (NSManagedObjectContext *)createInMemoryManagedObjectContext {
+- (NSManagedObjectContext *)createInMemoryManagedObjectContextWithName:(NSString *)name {
     
-    NSPersistentStoreCoordinator *coordinator = [self inMemoryPersistentStoreCoordinator];
+    NSPersistentStoreCoordinator *coordinator = [self inMemoryPersistentStoreCoordinatorWithName:name];
     NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [managedObjectContext setPersistentStoreCoordinator:coordinator];
     
     return managedObjectContext;
 }
 
-- (NSManagedObjectModel *)managedObjectModel {
+- (NSManagedObjectModel *)managedObjectModelWithName:(NSString *)name {
     
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ios_foo" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:name withExtension:@"momd"];
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     
     return managedObjectModel;
 }
 
 
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-
-    NSURL *storeURL = [[self.documentsDirectoryLocator applicationDocumentsDirectory] URLByAppendingPathComponent:@"ios_foo.sqlite"];
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinatorWithName:(NSString *)name {
     
-    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    NSURL *storeURL = [[self.documentsDirectoryLocator applicationDocumentsDirectory] URLByAppendingPathComponent:[name stringByAppendingString:@".sqlite"]];
+    
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModelWithName:name]];
     
     [persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                              configuration:nil
                                                        URL:storeURL
-                                                     options:nil
-                                                       error:nil];
+                                                   options:nil
+                                                     error:nil];
     
     return persistentStoreCoordinator;
 }
 
-- (NSPersistentStoreCoordinator *)inMemoryPersistentStoreCoordinator {
+- (NSPersistentStoreCoordinator *)inMemoryPersistentStoreCoordinatorWithName:(NSString *)name {
     
-        NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModelWithName:name]];
     
     [persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType
                                              configuration:nil
@@ -69,6 +69,5 @@
     
     return persistentStoreCoordinator;
 }
-
 
 @end

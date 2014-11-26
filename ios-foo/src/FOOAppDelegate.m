@@ -37,7 +37,7 @@
     
     self.documentsLocator = [[FOONSDocumentsDirectoryLocator alloc] init];
     self.coredataFactory = [[FOOCoreDataFactory alloc] initWithDocumentsDirectoryLocator:self.documentsLocator];
-    self.mainContext = [self.coredataFactory createManagedObjectContext];
+    self.mainContext = [self.coredataFactory createManagedObjectContextWithFileName:@"ios_foo"];
     self.dispatcher = [[FOODispatcher alloc] init];
     self.backgroundCoreDataFactory = [[FOOBackgroundCoreDataFactory alloc] init];
     self.requestor = [[FOOFakeRequestor alloc] init];
