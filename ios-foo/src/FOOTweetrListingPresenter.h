@@ -3,6 +3,7 @@
 #import "FOOTweetrListingView.h"
 #import "FOOTweetrModel.h"
 #import "FOOTweetrViewModel.h"
+#import "FOOCoreDataTweetrRecord.h"
 
 @interface FOOTweetrListingPresenter : NSObject
 

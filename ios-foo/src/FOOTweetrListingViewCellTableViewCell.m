@@ -52,6 +52,10 @@
     return self;
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -13,6 +13,8 @@
 #import "FOOFakeRequestor.h"
 #import "FOOTweetrModel.h"
 
+#import "FOOCoreDataUserRecord.h"
+
 @interface FOOAppDelegate()
 
 @property (nonatomic) FOONSDocumentsDirectoryLocator *documentsLocator;
@@ -54,9 +56,23 @@
     
     FOOTweetrListingViewController *viewController = [[FOOTweetrListingViewController alloc] initWithTweetrModel:listingModel];
     self.window.rootViewController = viewController;
+    
+//    [self createUsers];
+    
     [self.syncer sync];
     
     return YES;
+}
+
+- (void)createUsers {
+    FOOCoreDataUserRecord *user1 = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([FOOCoreDataUserRecord class])
+                                                                 inManagedObjectContext:self.mainContext];
+    user1.name = @"Muggs";
+    
+    FOOCoreDataUserRecord *user2 = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([FOOCoreDataUserRecord class])
+                                                                 inManagedObjectContext:self.mainContext];
+    user2.name = @"Missy";
+    [self.mainContext save:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="FOOCoreDataTweetrRecord" representedClassName="FOOCoreDataTweetrRecord" syncable="YES">
         <attribute name="content" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
-        <attribute name="user" attributeType="String" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="FOOCoreDataUserRecord" inverseName="tweetrs" inverseEntity="FOOCoreDataUserRecord" syncable="YES"/>
+    </entity>
+    <entity name="FOOCoreDataUserRecord" representedClassName="FOOCoreDataUserRecord" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tweetrs" toMany="YES" deletionRule="Cascade" destinationEntity="FOOCoreDataTweetrRecord" inverseName="user" inverseEntity="FOOCoreDataTweetrRecord" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FOOCoreDataTweetrRecord" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="FOOCoreDataTweetrRecord" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="FOOCoreDataUserRecord" positionX="-63" positionY="9" width="128" height="73"/>
     </elements>
 </model>

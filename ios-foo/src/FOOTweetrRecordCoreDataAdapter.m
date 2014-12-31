@@ -15,12 +15,12 @@
     return self;
 }
 
--(FOOCoreDataTweetrRecord *)convertTweetrRecordToCoreDataType:(FOOTweetrRecord *)tweetrRecord {
+-(FOOCoreDataTweetrRecord *)convertTweetrRecordToCoreDataType:(FOOTweetrRecord *)tweetrRecord user:(FOOCoreDataUserRecord *)user {
     FOOCoreDataTweetrRecord *coreDataRecord =  [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([FOOCoreDataTweetrRecord class])
                                                                              inManagedObjectContext:self.context];
     
     coreDataRecord.title = tweetrRecord.title;
-    coreDataRecord.user = tweetrRecord.user;
+    coreDataRecord.user = user;
     coreDataRecord.content = tweetrRecord.content;
     
     return coreDataRecord;

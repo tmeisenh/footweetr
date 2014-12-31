@@ -45,7 +45,7 @@
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinatorWithName:(NSString *)name {
     
     NSURL *storeURL = [[self.documentsDirectoryLocator applicationDocumentsDirectory] URLByAppendingPathComponent:[name stringByAppendingString:@".sqlite"]];
-    
+    NSLog(@"store url: %@", storeURL);
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModelWithName:name]];
     
     [persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType

@@ -26,7 +26,9 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([FOOCoreDataTweetrRecord class])];
     [request setFetchBatchSize:20];
     NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    [request setSortDescriptors:@[sorter]];
+    NSSortDescriptor *nameSorter = [[NSSortDescriptor alloc] initWithKey:@"user.name" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+
+    [request setSortDescriptors:@[nameSorter, sorter]];
     
     /**
      Having a cache seems buggy as hell when it comes to deleting either a single row
@@ -34,7 +36,7 @@
      */
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                    managedObjectContext:managedObjectContext
-                                                     sectionNameKeyPath:nil
+                                                     sectionNameKeyPath:@"user.name"
                                                               cacheName:nil];
     self.frc.delegate = self;
     [self.frc performFetch:nil];
@@ -63,8 +65,31 @@
     [self.frc.managedObjectContext save:nil];
 }
 
+- (NSInteger)totalCount {
+    return [[self.frc fetchedObjects] count];
+}
+
 -(void)requestSync {
     [self.syncer scheduleNewSyncJobs];
+}
+
+
+- (FOOCoreDataTweetrRecord *)dataForIndex:(NSIndexPath *)index {
+    return [self.frc objectAtIndexPath:index];
+}
+
+- (FOOCoreDataUserRecord *)dataForSection:(NSInteger)section {
+    return [[self.frc sections] objectAtIndex:section];
+}
+
+- (NSInteger)numberOfSections {
+    return [[self.frc sections] count];
+}
+
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.frc sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -75,6 +100,28 @@
     [self.delegate endUpdate];
 }
 
+-(void)controller:(NSFetchedResultsController *)controller
+ didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+          atIndex:(NSUInteger)sectionIndex
+    forChangeType:(NSFetchedResultsChangeType)type {
+ 
+    switch (type) {
+        case NSFetchedResultsChangeInsert: {
+            [self.delegate insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
+            break;
+        }
+        case NSFetchedResultsChangeDelete: {
+            [self.delegate removeSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
+            break;
+        }
+        case NSFetchedResultsChangeUpdate: {
+            [self.delegate updateSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 -(void)controller:(NSFetchedResultsController *)controller
   didChangeObject:(id)anObject

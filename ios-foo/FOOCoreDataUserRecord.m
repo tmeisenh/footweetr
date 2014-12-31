@@ -1,19 +1,18 @@
 //
-//  FOOCoreDataTweetrRecord.m
+//  FOOCoreDataUserRecord.m
 //  ios-foo
 //
 //  Created by Travis Meisenheimer on 12/30/14.
 //  Copyright (c) 2014 asynchrony.com. All rights reserved.
 //
 
-#import "FOOCoreDataTweetrRecord.h"
 #import "FOOCoreDataUserRecord.h"
+#import "FOOCoreDataTweetrRecord.h"
 
 
-@implementation FOOCoreDataTweetrRecord
+@implementation FOOCoreDataUserRecord
 
-@dynamic content;
-@dynamic title;
-@dynamic user;
+@dynamic name;
+@dynamic tweetrs;
 
 @end

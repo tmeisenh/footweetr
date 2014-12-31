@@ -51,12 +51,24 @@
     [self.model requestSync];
 }
 
--(NSInteger)dataCount {
+- (NSInteger)numberOfRowsInSection:(NSInteger)section {
+    return [self.model numberOfRowsInSection:section];
+}
+
+- (NSInteger)numberOfSections {
+    return [self.model numberOfSections];
+}
+
+- (NSInteger)dataCount {
     return [[self.model fetchAllTweetrRecords] count];
 }
 
-- (FOOTweetrRecord *)dataForIndex:(NSInteger)index {
-    return [self.model fetchAllTweetrRecords][index];
+- (FOOCoreDataTweetrRecord *)dataForIndex:(NSIndexPath *)index {
+    return [self.model dataForIndex:index];
+}
+
+- (NSString *)sectionValue:(NSInteger)section {
+    return [[self.model dataForSection:section] name];
 }
 
 #pragma mark FOOTweetrModelDelegate
@@ -71,7 +83,7 @@
 
 - (void)endUpdate {
     [self.view endUpdate];
-    [self.view updateNumberOfRecords:[self dataCount]];
+    [self.view updateNumberOfRecords:[self.model totalCount]];
 }
 
 - (void)dataUpdated:(NSArray *)paths {
@@ -84,6 +96,18 @@
 
 - (void)dataRemoved:(NSArray *)paths {
     [self.view removeRows:paths];
+}
+
+-(void)insertSections:(NSIndexSet *)sections {
+    [self.view insertSections:sections];
+}
+
+- (void)removeSections:(NSIndexSet *)sections {
+    [self.view removeSections:sections];
+}
+
+- (void)updateSections:(NSIndexSet *)sections {
+    [self.view updateSections:sections];
 }
 
 @end

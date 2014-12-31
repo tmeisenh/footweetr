@@ -1,5 +1,6 @@
 #import "FOOTweetrListingView.h"
 #import "FOOTweetrListingViewCellTableViewCell.h"
+#import "FOOTweeterListingSectionHeaderView.h"
 
 #define FOOTweetrListingViewCellReuseIdentifier @"FOOTweetrListingViewCellReuseIdentifier"
 
@@ -75,6 +76,7 @@
         self.listing.allowsSelectionDuringEditing = YES;
         [self.listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:FOOTweetrListingViewCellReuseIdentifier];
         [self.listing addSubview:self.refreshControl];
+        [self.listing setPagingEnabled:NO];
         
         [self addSubview:self.listing];
         
@@ -117,6 +119,19 @@
     /* do what? */
 }
 
+- (void)insertSections:(NSIndexSet *)sections {
+    [self.listing insertSections:sections withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)removeSections:(NSIndexSet *)sections {
+    [self.listing deleteSections:sections withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)updateSections:(NSIndexSet *)sections {
+//    [self.listing u:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+
+}
+
 -(void)updateNumberOfRecords:(NSInteger)numberOfRecords {
     self.numberOfRecordsLabel.text = [NSString stringWithFormat:@"Number of records %i", numberOfRecords];
 }
@@ -140,25 +155,37 @@
     return 100.0;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 50.0;
+}
+
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FOOTweetrRecord *record = [self.delegate dataForIndex:indexPath.row];
+    FOOCoreDataTweetrRecord *record = [self.delegate dataForIndex:indexPath];
     /* This could just as easily pass the index. */
     [self.delegate selectedRecord:record];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    FOOTweeterListingSectionHeaderView *header = [[FOOTweeterListingSectionHeaderView alloc] initWithName:[self.delegate sectionValue:section]];
+    return header;
 }
 
 #pragma mark UITableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FOOTweetrListingViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FOOTweetrListingViewCellReuseIdentifier];
-    FOOTweetrRecord *record = [self.delegate dataForIndex:indexPath.row];
-    [cell setTitle:record.title user:record.user content:record.content];
+    FOOCoreDataTweetrRecord *record = [self.delegate dataForIndex:indexPath];
+    [cell setTitle:record.title user:record.user.name content:record.content];
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.delegate dataCount];
+    return [self.delegate numberOfRowsInSection:section];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.delegate numberOfSections];
+}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;

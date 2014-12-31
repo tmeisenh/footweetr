@@ -61,8 +61,8 @@
     [when([requestor fetchAllTweetrRecords]) thenReturn:@[r1, r2]];
     [when([backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:persistentStoreCoordinator]) thenReturn:backgroundContext];
     [when([backgroundCoreDataFactory createCoreDataAdapterForContext:backgroundContext]) thenReturn:adapter];
-    [when([adapter convertTweetrRecordToCoreDataType:r1]) thenReturn:c1];
-    [when([adapter convertTweetrRecordToCoreDataType:r2]) thenReturn:c2];
+    [when([adapter convertTweetrRecordToCoreDataType:r1 user:nil]) thenReturn:c1];
+    [when([adapter convertTweetrRecordToCoreDataType:r2 user:nil]) thenReturn:c2];
 
     
     [when([backgroundContext hasChanges]) thenReturn:@YES];
@@ -128,8 +128,8 @@
     [when([requestor fetchAllTweetrRecords]) thenReturn:@[r1, r2]];
     [when([backgroundCoreDataFactory createManagedObjectContextForPersistentStoreCoordinator:persistentStoreCoordinator]) thenReturn:backgroundContext];
     [when([backgroundCoreDataFactory createCoreDataAdapterForContext:backgroundContext]) thenReturn:adapter];
-    [when([adapter convertTweetrRecordToCoreDataType:r1]) thenReturn:c1];
-    [when([adapter convertTweetrRecordToCoreDataType:r2]) thenReturn:c2];
+    [when([adapter convertTweetrRecordToCoreDataType:r1 user:nil]) thenReturn:c1];
+    [when([adapter convertTweetrRecordToCoreDataType:r2 user:nil]) thenReturn:c2];
     [when([backgroundContext insertObject:c2]) thenDo:^{
         [testObject cancel];
     }];

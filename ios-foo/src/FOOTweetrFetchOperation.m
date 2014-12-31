@@ -47,7 +47,7 @@
     // In real code, we'd build up batch sizes to save to core data...
     if (!self.isCancelled) {
         for (FOOTweetrRecord *record in records) {
-            FOOCoreDataTweetrRecord *coreDataRecord = [self.adapter convertTweetrRecordToCoreDataType:record];
+            FOOCoreDataTweetrRecord *coreDataRecord = [self.adapter convertTweetrRecordToCoreDataType:record user:[self getUser]];
             [self.backgroundContext insertObject:coreDataRecord];
         }
     }
@@ -57,6 +57,22 @@
     if ([self.backgroundContext hasChanges] && !self.isCancelled) {
         [self.backgroundContext save:&error];
     }
+}
+
+// always gets the lowest user
+- (FOOCoreDataUserRecord *)getUser {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([FOOCoreDataUserRecord class])];
+    
+    NSSortDescriptor *nameSorter = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    [request setSortDescriptors:@[nameSorter]];
+    NSArray *allUsers = [self.backgroundContext executeFetchRequest:request
+                                                              error:nil];
+
+    
+    NSSortDescriptor *lowestTweetrSorter = [NSSortDescriptor sortDescriptorWithKey:@"tweetrs.@count" ascending:YES];
+
+    FOOCoreDataUserRecord *user = [[allUsers sortedArrayUsingDescriptors:@[lowestTweetrSorter]] firstObject];
+    return user;
 }
 
 @end
