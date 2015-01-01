@@ -2,9 +2,6 @@
 #import "FOOTweetrListingViewCellTableViewCell.h"
 #import "FOOTweeterListingSectionHeaderView.h"
 
-#define FOOTweetrListingViewCellReuseIdentifier @"FOOTweetrListingViewCellReuseIdentifier"
-
-
 @interface FOOTweetrListingView() <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) UITableView *listing;
@@ -74,7 +71,7 @@
         self.listing.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.listing.allowsMultipleSelection = NO;
         self.listing.allowsSelectionDuringEditing = YES;
-        [self.listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:FOOTweetrListingViewCellReuseIdentifier];
+        [self.listing registerClass:[FOOTweetrListingViewCellTableViewCell class] forCellReuseIdentifier:NSStringFromClass([FOOCoreDataTweetrRecord class])];
         [self.listing addSubview:self.refreshControl];
         [self.listing setPagingEnabled:NO];
         
@@ -173,8 +170,8 @@
 #pragma mark UITableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FOOTweetrListingViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FOOTweetrListingViewCellReuseIdentifier];
     FOOCoreDataTweetrRecord *record = [self.delegate dataForIndex:indexPath];
+    FOOTweetrListingViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([record class])];
     [cell setTitle:record.title user:record.user.name content:record.content];
     return cell;
 }

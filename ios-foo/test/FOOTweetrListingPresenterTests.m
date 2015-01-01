@@ -76,7 +76,7 @@
     [when([model fetchAllTweetrRecords]) thenReturn:records];
 
     
-    XCTAssertEqualObjects(record1, [[self viewDelegate] dataForIndex:1]);
+    XCTAssertEqualObjects(record1, [[self viewDelegate] dataForIndex:nil]);
 }
 
 - (void)testWhenModelStartsUpdating_ThenViewIsUpdated {

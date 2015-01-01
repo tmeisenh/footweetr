@@ -15,6 +15,9 @@
 		1F82ED881A1AD9D700BA0E21 /* FOOTweetrListingPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F82ED871A1AD9D700BA0E21 /* FOOTweetrListingPresenter.m */; };
 		1F82ED8A1A1ADC0400BA0E21 /* FOOTweetrListingPresenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F82ED891A1ADC0400BA0E21 /* FOOTweetrListingPresenterTests.m */; };
 		1F82ED8D1A1AE02A00BA0E21 /* FOOTweetrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F82ED8C1A1AE02A00BA0E21 /* FOOTweetrViewModel.m */; };
+		1FAA7D591A55A5F7000A1A3E /* FOOTweeterListingCellDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA7D581A55A5F7000A1A3E /* FOOTweeterListingCellDecorator.m */; };
+		1FAA7D5D1A55A6FF000A1A3E /* FOOTweeterListingSectionDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA7D5C1A55A6FF000A1A3E /* FOOTweeterListingSectionDecorator.m */; };
+		1FAA7D611A55A970000A1A3E /* FOOTweetrListingTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA7D601A55A970000A1A3E /* FOOTweetrListingTableViewAdapter.m */; };
 		2E3D577952F64BC08F3C5DB7 /* libPods-ios-fooTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E37F34FDF9B04341B1DACEE8 /* libPods-ios-fooTests.a */; };
 		5AB5C74219E8A94B0067AC6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB5C74119E8A94B0067AC6C /* Foundation.framework */; };
 		5AB5C74419E8A94B0067AC6C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB5C74319E8A94B0067AC6C /* CoreGraphics.framework */; };
@@ -75,6 +78,16 @@
 		1F82ED891A1ADC0400BA0E21 /* FOOTweetrListingPresenterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingPresenterTests.m; path = test/FOOTweetrListingPresenterTests.m; sourceTree = "<group>"; };
 		1F82ED8B1A1AE02A00BA0E21 /* FOOTweetrViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrViewModel.h; path = src/FOOTweetrViewModel.h; sourceTree = "<group>"; };
 		1F82ED8C1A1AE02A00BA0E21 /* FOOTweetrViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrViewModel.m; path = src/FOOTweetrViewModel.m; sourceTree = "<group>"; };
+		1FAA7D561A55A5DF000A1A3E /* IOBTableViewCellDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOBTableViewCellDecorator.h; path = src/IOBTableViewCellDecorator.h; sourceTree = "<group>"; };
+		1FAA7D571A55A5F7000A1A3E /* FOOTweeterListingCellDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweeterListingCellDecorator.h; path = src/FOOTweeterListingCellDecorator.h; sourceTree = "<group>"; };
+		1FAA7D581A55A5F7000A1A3E /* FOOTweeterListingCellDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweeterListingCellDecorator.m; path = src/FOOTweeterListingCellDecorator.m; sourceTree = "<group>"; };
+		1FAA7D5A1A55A6C6000A1A3E /* IOBTableViewSectionDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOBTableViewSectionDecorator.h; path = src/IOBTableViewSectionDecorator.h; sourceTree = "<group>"; };
+		1FAA7D5B1A55A6FF000A1A3E /* FOOTweeterListingSectionDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweeterListingSectionDecorator.h; path = src/FOOTweeterListingSectionDecorator.h; sourceTree = "<group>"; };
+		1FAA7D5C1A55A6FF000A1A3E /* FOOTweeterListingSectionDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweeterListingSectionDecorator.m; path = src/FOOTweeterListingSectionDecorator.m; sourceTree = "<group>"; };
+		1FAA7D5E1A55A939000A1A3E /* IOBTableViewAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOBTableViewAdapter.h; path = src/IOBTableViewAdapter.h; sourceTree = "<group>"; };
+		1FAA7D5F1A55A970000A1A3E /* FOOTweetrListingTableViewAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FOOTweetrListingTableViewAdapter.h; path = src/FOOTweetrListingTableViewAdapter.h; sourceTree = "<group>"; };
+		1FAA7D601A55A970000A1A3E /* FOOTweetrListingTableViewAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FOOTweetrListingTableViewAdapter.m; path = src/FOOTweetrListingTableViewAdapter.m; sourceTree = "<group>"; };
+		1FAA7D621A55AA17000A1A3E /* IOBTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOBTableViewDataSource.h; path = src/IOBTableViewDataSource.h; sourceTree = "<group>"; };
 		5AB5C73E19E8A94B0067AC6C /* ios-foo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-foo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB5C74119E8A94B0067AC6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5AB5C74319E8A94B0067AC6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -161,6 +174,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FAA7D551A55A5CD000A1A3E /* tb */ = {
+			isa = PBXGroup;
+			children = (
+				1FAA7D561A55A5DF000A1A3E /* IOBTableViewCellDecorator.h */,
+				1FAA7D5A1A55A6C6000A1A3E /* IOBTableViewSectionDecorator.h */,
+				1FAA7D5E1A55A939000A1A3E /* IOBTableViewAdapter.h */,
+				1FAA7D621A55AA17000A1A3E /* IOBTableViewDataSource.h */,
+			);
+			name = tb;
+			sourceTree = "<group>";
+		};
+		1FAA7D631A55ACAA000A1A3E /* listing-table */ = {
+			isa = PBXGroup;
+			children = (
+				5AB5C7C419E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.h */,
+				5AB5C7C519E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m */,
+				1FAA7D5F1A55A970000A1A3E /* FOOTweetrListingTableViewAdapter.h */,
+				1FAA7D601A55A970000A1A3E /* FOOTweetrListingTableViewAdapter.m */,
+				1FAA7D571A55A5F7000A1A3E /* FOOTweeterListingCellDecorator.h */,
+				1FAA7D581A55A5F7000A1A3E /* FOOTweeterListingCellDecorator.m */,
+				1FAA7D5B1A55A6FF000A1A3E /* FOOTweeterListingSectionDecorator.h */,
+				1FAA7D5C1A55A6FF000A1A3E /* FOOTweeterListingSectionDecorator.m */,
+				1F365B151A5393A50016910D /* FOOTweeterListingSectionHeaderView.h */,
+				1F365B161A5393A50016910D /* FOOTweeterListingSectionHeaderView.m */,
+			);
+			name = "listing-table";
+			sourceTree = "<group>";
+		};
 		5AB5C73519E8A94B0067AC6C = {
 			isa = PBXGroup;
 			children = (
@@ -291,20 +332,18 @@
 		5AB5C7BC19E8C6700067AC6C /* listing */ = {
 			isa = PBXGroup;
 			children = (
-				5AB5C7BD19E8C6840067AC6C /* Tests */,
-				5AB5C7B019E8C3B60067AC6C /* FOOTweetrListingViewController.h */,
-				5AB5C7B119E8C3B60067AC6C /* FOOTweetrListingViewController.m */,
-				5AB5C7B319E8C4E60067AC6C /* FOOTweetrListingView.h */,
-				5AB5C7B419E8C4E60067AC6C /* FOOTweetrListingView.m */,
-				5AB5C7C019E8C6D00067AC6C /* FOOTweetrRequestor.h */,
-				5AB5C7C419E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.h */,
-				5AB5C7C519E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m */,
+				1FAA7D631A55ACAA000A1A3E /* listing-table */,
 				1F82ED861A1AD9D700BA0E21 /* FOOTweetrListingPresenter.h */,
 				1F82ED871A1AD9D700BA0E21 /* FOOTweetrListingPresenter.m */,
+				5AB5C7B319E8C4E60067AC6C /* FOOTweetrListingView.h */,
+				5AB5C7B419E8C4E60067AC6C /* FOOTweetrListingView.m */,
+				5AB5C7B019E8C3B60067AC6C /* FOOTweetrListingViewController.h */,
+				5AB5C7B119E8C3B60067AC6C /* FOOTweetrListingViewController.m */,
+				5AB5C7C019E8C6D00067AC6C /* FOOTweetrRequestor.h */,
 				1F82ED8B1A1AE02A00BA0E21 /* FOOTweetrViewModel.h */,
 				1F82ED8C1A1AE02A00BA0E21 /* FOOTweetrViewModel.m */,
-				1F365B151A5393A50016910D /* FOOTweeterListingSectionHeaderView.h */,
-				1F365B161A5393A50016910D /* FOOTweeterListingSectionHeaderView.m */,
+				1FAA7D551A55A5CD000A1A3E /* tb */,
+				5AB5C7BD19E8C6840067AC6C /* Tests */,
 			);
 			name = listing;
 			sourceTree = "<group>";
@@ -511,18 +550,21 @@
 				5AB5C75019E8A94B0067AC6C /* main.m in Sources */,
 				1F365B171A5393A50016910D /* FOOTweeterListingSectionHeaderView.m in Sources */,
 				5AB5C7B819E8C5C70067AC6C /* FOOTweetrRecord.m in Sources */,
+				1FAA7D5D1A55A6FF000A1A3E /* FOOTweeterListingSectionDecorator.m in Sources */,
 				1F365B141A5386750016910D /* FOOCoreDataTweetrRecord.m in Sources */,
 				1F11A8EF1A170494006CC7BE /* FOORepeatingTimer.m in Sources */,
 				1F82ED8D1A1AE02A00BA0E21 /* FOOTweetrViewModel.m in Sources */,
 				5AB5C75719E8A94B0067AC6C /* ios_foo.xcdatamodeld in Sources */,
 				5AB5C7C319E8C9690067AC6C /* FOOTweetrModel.m in Sources */,
 				5AF36CA619E8EFAC0085C737 /* FOOBackgroundCoreDataFactory.m in Sources */,
+				1FAA7D611A55A970000A1A3E /* FOOTweetrListingTableViewAdapter.m in Sources */,
 				5AB5C7B519E8C4E60067AC6C /* FOOTweetrListingView.m in Sources */,
 				5AB5C7A719E8C1060067AC6C /* FOONSDocumentsDirectoryLocator.m in Sources */,
 				5AB5C7B219E8C3B60067AC6C /* FOOTweetrListingViewController.m in Sources */,
 				1F365B0E1A5382420016910D /* FOOCoreDataUserRecord.m in Sources */,
 				1F82ED881A1AD9D700BA0E21 /* FOOTweetrListingPresenter.m in Sources */,
 				5AB5C7C619E8CCE80067AC6C /* FOOTweetrListingViewCellTableViewCell.m in Sources */,
+				1FAA7D591A55A5F7000A1A3E /* FOOTweeterListingCellDecorator.m in Sources */,
 				5AB5C7CA19E8D94A0067AC6C /* FOOTweetrFetchOperation.m in Sources */,
 				5AB5C7A619E8C1060067AC6C /* FOOCoreDataFactory.m in Sources */,
 				5AF36CA319E8ED590085C737 /* FOOTweetrFetchOperationFactory.m in Sources */,
