@@ -2,11 +2,13 @@
 #import "FOOTweetrListingViewCellTableViewCell.h"
 #import "FOOTweeterListingSectionHeaderView.h"
 
-@interface FOOTweetrListingView() <UITableViewDataSource, UITableViewDelegate>
+@interface FOOTweetrListingView() <UITableViewDataSource, UITableViewDelegate, IOBTableViewDataSourceDelegate>
 
 @property (nonatomic) UITableView *listing;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) UILabel *numberOfRecordsLabel;
+@property (nonatomic) id <IOBTableViewDataSource>dataSource;
+
 @end
 
 @implementation FOOTweetrListingView
@@ -92,45 +94,17 @@
     return self;
 }
 
+- (void)setDataSource:(id<IOBTableViewDataSource>)dataSource {
+    _dataSource = dataSource;
+    [_dataSource setDelegate:self];
+}
+
 - (void)refreshFinished {
     [self.refreshControl endRefreshing];
 }
 
-- (void)beginUpdate {
-    [self.listing beginUpdates];
-}
-
-- (void)endUpdate {
-    [self.listing endUpdates];
-}
-
--(void)insertRows:(NSArray *)paths {
-    [self.listing insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-
-- (void)removeRows:(NSArray *)paths {
-    [self.listing deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-
-- (void)updateRows:(NSArray *)paths {
-    /* do what? */
-}
-
-- (void)insertSections:(NSIndexSet *)sections {
-    [self.listing insertSections:sections withRowAnimation:UITableViewRowAnimationNone];
-}
-
-- (void)removeSections:(NSIndexSet *)sections {
-    [self.listing deleteSections:sections withRowAnimation:UITableViewRowAnimationNone];
-}
-
-- (void)updateSections:(NSIndexSet *)sections {
-//    [self.listing u:sections withRowAnimation:UITableViewRowAnimationAutomatic];
-
-}
-
 -(void)updateNumberOfRecords:(NSInteger)numberOfRecords {
-    self.numberOfRecordsLabel.text = [NSString stringWithFormat:@"Number of records %i", numberOfRecords];
+    self.numberOfRecordsLabel.text = [NSString stringWithFormat:@"Number of records %ldl", (long)numberOfRecords];
 }
 
 - (void)deletePressed {
@@ -144,8 +118,9 @@
 #pragma mark UITableViewDelegate
 
 -(void)reloadTableView {
+    [self.dataSource loadData];
     [self.listing reloadData];
-    [self updateNumberOfRecords:[self.delegate dataCount]];
+    [self updateNumberOfRecords:[self.dataSource numberOfTotalRows]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -157,31 +132,31 @@
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FOOCoreDataTweetrRecord *record = [self.delegate dataForIndex:indexPath];
+    FOOCoreDataTweetrRecord *record = (FOOCoreDataTweetrRecord *) [self.dataSource objectAtIndexPath:indexPath];
     /* This could just as easily pass the index. */
     [self.delegate selectedRecord:record];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    FOOTweeterListingSectionHeaderView *header = [[FOOTweeterListingSectionHeaderView alloc] initWithName:[self.delegate sectionValue:section]];
+    FOOTweeterListingSectionHeaderView *header = [[FOOTweeterListingSectionHeaderView alloc] initWithName:(NSString *)[self.dataSource objectAtSection:section]];
     return header;
 }
 
 #pragma mark UITableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FOOCoreDataTweetrRecord *record = [self.delegate dataForIndex:indexPath];
+    FOOCoreDataTweetrRecord *record = (FOOCoreDataTweetrRecord *) [self.dataSource objectAtIndexPath:indexPath];
     FOOTweetrListingViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([record class])];
     [cell setTitle:record.title user:record.user.name content:record.content];
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.delegate numberOfRowsInSection:section];
+    return [self.dataSource numberOfRowsInSection:section];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.delegate numberOfSections];
+    return [self.dataSource numberOfSections];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -195,6 +170,45 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.delegate swipeToDelete:indexPath];
     }
+}
+
+- (void)beginUpdates {
+    [self.listing beginUpdates];
+}
+
+- (void)endUpdates {
+    [self.listing endUpdates];
+}
+
+- (void)addSection:(NSInteger)section {
+    [self.listing insertSections:[NSIndexSet indexSetWithIndex:section]
+                withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)removeSection:(NSInteger)section {
+    [self.listing deleteSections:[NSIndexSet indexSetWithIndex:section]
+                withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)addRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.listing insertRowsAtIndexPaths:@[indexPath]
+                        withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)removeRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.listing deleteRowsAtIndexPaths:@[indexPath]
+                        withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)reloadRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.listing reloadRowsAtIndexPaths:@[indexPath]
+                        withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)moveRowFromOldIndexPath:(NSIndexPath *)oldIndexPath
+                 toNewIndexPath:(NSIndexPath *)newIndexPath {
+    
+    [self.listing moveRowAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
 }
 
 @end

@@ -25,7 +25,7 @@
 }
 
 - (void)viewDidLoad {
-    [self.view reloadTableView];
+    [self.model viewNeedsData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,63 +51,15 @@
     [self.model requestSync];
 }
 
-- (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return [self.model numberOfRowsInSection:section];
-}
-
-- (NSInteger)numberOfSections {
-    return [self.model numberOfSections];
-}
-
-- (NSInteger)dataCount {
-    return [[self.model fetchAllTweetrRecords] count];
-}
-
-- (FOOCoreDataTweetrRecord *)dataForIndex:(NSIndexPath *)index {
-    return [self.model dataForIndex:index];
-}
-
-- (NSString *)sectionValue:(NSInteger)section {
-    return [[self.model dataForSection:section] name];
-}
-
 #pragma mark FOOTweetrModelDelegate
 
-- (void)beginUpdate {
-    if ([self.viewModel isRefreshOngoing]) {
-        [self.view refreshFinished];
-        [self.viewModel refreshFinished];
-    }
-    [self.view beginUpdate];
+- (void)syncFinished {
+    [self.view refreshFinished];
 }
 
-- (void)endUpdate {
-    [self.view endUpdate];
-    [self.view updateNumberOfRecords:[self.model totalCount]];
-}
-
-- (void)dataUpdated:(NSArray *)paths {
-    [self.view updateRows:paths];
-}
-
-- (void)dataInserted:(NSArray *)paths {
-    [self.view insertRows:paths];
-}
-
-- (void)dataRemoved:(NSArray *)paths {
-    [self.view removeRows:paths];
-}
-
--(void)insertSections:(NSIndexSet *)sections {
-    [self.view insertSections:sections];
-}
-
-- (void)removeSections:(NSIndexSet *)sections {
-    [self.view removeSections:sections];
-}
-
-- (void)updateSections:(NSIndexSet *)sections {
-    [self.view updateSections:sections];
+- (void)setViewDataSource:(id<IOBTableViewDataSource>)dataSource {
+    [self.view setDataSource:dataSource];
+    [self.view reloadTableView];
 }
 
 @end
