@@ -116,6 +116,10 @@
     /* do what? */
 }
 
+- (void)dataMoved:(NSIndexPath *)src dest:(NSIndexPath *)dest {
+    [self.listing moveRowAtIndexPath:src toIndexPath:dest];
+}
+
 - (void)insertSections:(NSIndexSet *)sections {
     [self.listing insertSections:sections withRowAnimation:UITableViewRowAnimationNone];
 }

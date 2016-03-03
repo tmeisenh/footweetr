@@ -142,6 +142,9 @@
             [self.delegate dataUpdated:@[newIndexPath]];
             break;
         }
+        case NSFetchedResultsChangeMove : {
+            [self.delegate dataMoved:indexPath dest:newIndexPath];
+        }
         default:
             break;
     }

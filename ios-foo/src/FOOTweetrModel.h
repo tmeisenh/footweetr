@@ -6,6 +6,8 @@
 - (void)dataRemoved:(NSArray *)paths;
 - (void)dataUpdated:(NSArray *)paths;
 
+- (void)dataMoved:(NSIndexPath *)src dest:(NSIndexPath *)dest;
+
 - (void)insertSections:(NSIndexSet *)sections;
 - (void)removeSections:(NSIndexSet *)sections;
 - (void)updateSections:(NSIndexSet *)sections;

@@ -110,4 +110,8 @@
     [self.view updateSections:sections];
 }
 
+- (void)dataMoved:(NSIndexPath *)src dest:(NSIndexPath *)dest {
+    [self.view dataMoved:src dest:dest];
+}
+
 @end

@@ -8,6 +8,7 @@
 @property (nonatomic) FOOTweetrRecordCoreDataAdapter *adapter;
 @property (nonatomic) NSPersistentStoreCoordinator *sharedPersistentStoreCoordinator;
 @property (nonatomic) NSManagedObjectContext *backgroundContext;
+
 @end
 
 @implementation FOOTweetrFetchOperation
@@ -48,6 +49,12 @@
     if (!self.isCancelled) {
         for (FOOTweetrRecord *record in records) {
             FOOCoreDataTweetrRecord *coreDataRecord = [self.adapter convertTweetrRecordToCoreDataType:record user:[self getUser]];
+            int times = [self randomNumber];
+            NSMutableString *randomTitle = [[NSMutableString alloc] init];
+            for (int i = 0; i < times; i++) {
+                [randomTitle appendString:[self randomChar]];
+            }
+            coreDataRecord.title = randomTitle;
             [self.backgroundContext insertObject:coreDataRecord];
         }
     }
@@ -57,6 +64,22 @@
     if ([self.backgroundContext hasChanges] && !self.isCancelled) {
         [self.backgroundContext save:&error];
     }
+}
+
+- (int)randomNumber {
+    return arc4random() % 5;
+}
+
+
+- (NSString *)randomChar {
+    NSString *alphabet  = @"abcdefghijklmnopqrstuvwxyz";
+    NSMutableString *s = [NSMutableString stringWithCapacity:20];
+    for (NSUInteger i = 0U; i < 20; i++) {
+        u_int32_t r = arc4random() % [alphabet length];
+        unichar c = [alphabet characterAtIndex:r];
+        [s appendFormat:@"%C", c];
+    }
+    return s;
 }
 
 // always gets the lowest user

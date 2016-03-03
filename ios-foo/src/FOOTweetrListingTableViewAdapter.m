@@ -66,7 +66,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.dataSource removeObjectAtIndexPath:indexPath];
+//        [self.dataSource rem:indexPath];
     }
 }
 

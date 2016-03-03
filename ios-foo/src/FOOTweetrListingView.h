@@ -25,6 +25,7 @@
 - (void)updateRows:(NSArray *)paths;
 - (void)insertRows:(NSArray *)paths;
 - (void)removeRows:(NSArray *)paths;
+- (void)dataMoved:(NSIndexPath *)src dest:(NSIndexPath *)dest;
 
 - (void)beginUpdate;
 - (void)endUpdate;
